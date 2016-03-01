@@ -1,0 +1,62 @@
+<?php
+
+namespace AuthBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Customer;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="auth_user")
+ */
+
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+
+    /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
+    * @ORM\JoinColumn(name="idCustomer", referencedColumnName="id")
+    * @var \AuthBundle\Entity\Costumer
+    */
+
+    private $customercustomer;
+
+    /**
+     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
+     * @var string
+     */
+    private $nombres;
+
+    
+    /**
+     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
+     * @var string
+    */
+    private $apellido_p;
+
+    
+    /**
+     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
+     * @var string
+     */
+    private $apellido_m;
+
+    /**
+     * @ORM\Column(type="string", length=16, unique=true, nullable=true)
+     * @var string
+     */
+    private $cellPhone;
+}

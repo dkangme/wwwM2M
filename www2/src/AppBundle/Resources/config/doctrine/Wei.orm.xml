@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Wei" table="WEI">
+    <indexes>
+      <index name="fk_WEI_Location_idx" columns="Location_idLocation"/>
+      <index name="fk_WEI_ModWei_Status1_idx" columns="ModWei_Status_id"/>
+      <index name="fk_WEI_Customer1_idx" columns="Customer_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="nickName_UNIQUE" columns="nickName"/>
+    </unique-constraints>
+    <id name="idwei" type="integer" column="idWEI">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nickname" type="string" column="nickName" length="24" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastreport" type="datetime" column="lastReport" nullable="true"/>
+    <field name="imei" type="string" column="IMEI" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="Description" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="operator" type="string" column="Operator" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="activationdate" type="datetime" column="activationDate" nullable="true"/>
+    <field name="modificationdate" type="datetime" column="modificationDate" nullable="true"/>
+    <field name="chipnumber" type="string" column="chipNumber" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="modweiStatus" target-entity="ModweiStatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="ModWei_Status_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="locationlocation" target-entity="Location" fetch="LAZY">
+      <join-columns>
+        <join-column name="Location_idLocation" referenced-column-name="idLocation"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="customer" target-entity="Customer" fetch="LAZY">
+      <join-columns>
+        <join-column name="Customer_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Alarmaction" table="AlarmAction">
+    <indexes>
+      <index name="fk_AlarmAction_Alarm1_idx" columns="Alarm_idAlarm"/>
+      <index name="fk_AlarmAction_NotificationList1_idx" columns="NotificationList_idNotificationList"/>
+    </indexes>
+    <id name="idalarmaction" type="integer" column="idAlarmAction">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="notificationlistnotificationlist" target-entity="Notificationlist" fetch="LAZY">
+      <join-columns>
+        <join-column name="NotificationList_idNotificationList" referenced-column-name="idNotificationList"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="alarmalarm" target-entity="Alarm" fetch="LAZY">
+      <join-columns>
+        <join-column name="Alarm_idAlarm" referenced-column-name="idAlarm"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

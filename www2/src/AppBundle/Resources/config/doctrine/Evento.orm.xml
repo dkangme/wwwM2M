@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Evento" table="Evento">
+    <indexes>
+      <index name="fk_Evento_Customer1_idx" columns="Customer_id"/>
+    </indexes>
+    <id name="idevento" type="integer" column="idEvento">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaevento" type="datetime" column="fechaEvento" nullable="false"/>
+    <field name="nivelevento" type="integer" column="nivelEvento" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="descripcion" type="string" column="descripcion" length="256" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="customer" target-entity="Customer" fetch="LAZY">
+      <join-columns>
+        <join-column name="Customer_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

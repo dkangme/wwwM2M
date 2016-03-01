@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Wei</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nickname</th>
+                <td>{{ wei.nickname }}</td>
+            </tr>
+            <tr>
+                <th>Lastreport</th>
+                <td>{% if wei.lastreport %}{{ wei.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imei</th>
+                <td>{{ wei.imei }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ wei.description }}</td>
+            </tr>
+            <tr>
+                <th>Operator</th>
+                <td>{{ wei.operator }}</td>
+            </tr>
+            <tr>
+                <th>Activationdate</th>
+                <td>{% if wei.activationdate %}{{ wei.activationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modificationdate</th>
+                <td>{% if wei.modificationdate %}{{ wei.modificationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Chipnumber</th>
+                <td>{{ wei.chipnumber }}</td>
+            </tr>
+            <tr>
+                <th>Idwei</th>
+                <td>{{ wei.idwei }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_wei_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

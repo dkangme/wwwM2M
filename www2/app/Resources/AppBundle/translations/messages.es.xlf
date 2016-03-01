@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Country</source>
+                <target>País</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Actions</source>
+                <target>Acciones</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Country List</source>
+                <target>Listado de Países</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>show</source>
+                <target>mostrar</target>
+            </trans-unit>      
+            <trans-unit id="5">
+                <source>edit</source>
+                <target>editar</target>
+            </trans-unit>
+            <trans-unit id="6">
+            	<source>Create a new entry</source>
+            	<target>Crear nuevo elemento</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Country edit</source>
+                <target>Edición de País</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Back to the list</source>
+                <target>Volver</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Dashboard</source>
+                <target>Panel de Control</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Events</source>
+                <target>Eventos</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Reports</source>
+                <target>Reportes</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Configuration</source>
+                <target>Configuración</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Users</source>
+                <target>Usuarios</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Customers</source>
+                <target>Clientes</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Sensors</source>
+                <target>Sensores</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Set Alarms</source>
+                <target>Configurar Alarmas</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Logout</source>
+                <target>Salir</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Event List</source>
+                <target>Eventos</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Time Stamp</source>
+                <target>Fecha y Hora</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Level</source>
+                <target>Nivel</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Description</source>
+                <target>Descripción</target>
+            </trans-unit>            
+            <trans-unit id="23">
+                <source>Search</source>
+                <target>Buscar</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Type text to search</source>
+                <target>Ingrese el texto a buscar</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Event</source>
+                <target>Evento</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

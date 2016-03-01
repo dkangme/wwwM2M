@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Evento</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Fechaevento</th>
+                <td>{% if evento.fechaevento %}{{ evento.fechaevento|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nivelevento</th>
+                <td>{{ evento.nivelevento }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ evento.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Idevento</th>
+                <td>{{ evento.idevento }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_evento_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

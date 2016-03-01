@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcumb %}
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="index.html">Home</a> 
+        <i class="icon-angle-right"></i>
+    </li>
+    <li><a href="#">Configuration</a><i class="icon-angle-right"></i></li>
+    <li><a href="#">ModWEI</a></li>
+</ul>
+
+{% endblock breadcumb %}
+
+
+{% block body %}
+    <h1>Wei list</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Imei</th>
+                <th>Description</th>
+                <th>Operator</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wei in weis %}
+            <tr>
+                <td><a href="{{ path('admin_wei_show', { 'id': wei.idwei }) }}">{{ wei.nickname }}</a></td>
+                <td>{{ wei.imei }}</td>
+                <td>{{ wei.description }}</td>
+                <td>{{ wei.operator }}</td>
+                <td>{{ wei.customer.nombre }}</td>
+                <td>{{ wei.ModweiStatus.description }}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_wei_show', { 'id': wei.idwei }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_wei_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

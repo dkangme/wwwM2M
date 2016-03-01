@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row-fluid hideInIE8 circleStats">
+        
+        <div class="span2" onTablet="span4" onDesktop="span2">
+            <div class="circleStatsItemBox orange">
+                <div class="header">CO2 - MSA Demo 1</div>
+                <span class="percent">PPM</span>
+                <div class="circleStat">
+                    <input type="text" value="40" class="whiteCircle" data-min="0" data-max="300"/>
+                </div>      
+                <div class="footer">
+                    <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
+                    </span> 
+                </div>
+            </div>
+        </div>
+        <div class="span2" onTablet="span4" onDesktop="span2">
+            <div class="circleStatsItemBox green">
+                <div class="header">CO2 - MSA Demo 1</div>
+                <span class="percent">PPM</span>
+                <div class="circleStat">
+                    <input type="text" value="40" class="whiteCircle" data-min="0" data-max="300"/>
+                </div>      
+                <div class="footer">
+                    <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
+                    </span> 
+                </div>
+            </div>
+        </div>
+
+    </div>       
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

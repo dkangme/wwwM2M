@@ -1,0 +1,39 @@
+app_evento:
+    resource: "@AppBundle/Controller/EventoController.php"
+    type:     annotation
+
+app_sensor:
+    resource: "@AppBundle/Controller/SensorController.php"
+    type:     annotation
+
+app_customer:
+    resource: "@AppBundle/Controller/CustomerController.php"
+    type:     annotation
+
+app_wei:
+    resource: "@AppBundle/Controller/WeiController.php"
+    type:     annotation
+
+app_wei:
+    resource: "@AppBundle/Controller/WeiController.php"
+    type:     annotation
+
+app_customer:
+    resource: "@AppBundle/Controller/CustomerController.php"
+    type:     annotation
+
+app_wei:
+    resource: "@AppBundle/Controller/WeiController.php"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+auth:
+    resource: "@AuthBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
