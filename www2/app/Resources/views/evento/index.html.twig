@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block breadcumb %}
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/admin/dashboard">Home</a> 
+    </li>
+    <li><a href="/admin/evento">{%trans%}Event{%endtrans%}</a></li>
+</ul>
+
+{% endblock breadcumb %}
+
 {% block body %}
     <h1>{%trans%}Event List{%endtrans%}</h1><br/>
     <div ng-app="angularTable">
@@ -11,6 +23,7 @@
                     <input type="text" ng-model="search" autofocus="autofocus" class="form-control" placeholder="{%trans%}Type text to search{%endtrans%}">
                     </div>
             </form><br/>
+            <p style="color:blue">{%trans%}Click on the title of the column "Time Stamp" or "Level" to sort the contents of the column.{%endtrans%}</p>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

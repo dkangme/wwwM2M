@@ -102,6 +102,18 @@
                 <source>Event</source>
                 <target>Evento</target>
             </trans-unit>
+            <trans-unit id="26">
+                <source>Click on the title of the column "Time Stamp" or "Level" to sort the contents of the column.</source>
+                <target>Haga un clic sobre el título de la columna "Fecha y hora" o "Nivel" para ordenar el contenido de la columna.</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>MODWEI List</source>
+                <target>MODWEI disponibles</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Nickname</source>
+                <target>Nombre</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

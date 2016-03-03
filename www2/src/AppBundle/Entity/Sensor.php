@@ -25,7 +25,7 @@ class Sensor
     /**
      * @var string
      */
-    private $sensorcol;
+    private $description;
 
     /**
      * @var integer
@@ -41,6 +41,26 @@ class Sensor
      * @var \AppBundle\Entity\Sensortype
      */
     private $sensortypesensortype;
+
+    /**
+     * @var integer
+     */
+    private $alarmlevel = '0';
+
+    /**
+     * @var string
+     */
+    private $cautionlevelformula = '%s*1';
+
+    /**
+     * @var string
+     */
+    private $warninglevelformula = '%s*1';
+
+    /**
+     * @var string
+     */
+    private $alertlevelformula = '%s*1';
 
 
     /**
@@ -116,27 +136,27 @@ class Sensor
     }
 
     /**
-     * Set sensorcol
+     * Set description
      *
-     * @param string $sensorcol
+     * @param string $description
      *
      * @return Sensor
      */
-    public function setSensorcol($sensorcol)
+    public function setDescription($description)
     {
-        $this->sensorcol = $sensorcol;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get sensorcol
+     * Get description
      *
      * @return string
      */
-    public function getSensorcol()
+    public function getDescription()
     {
-        return $this->sensorcol;
+        return $this->description;
     }
 
     /**
@@ -196,33 +216,100 @@ class Sensor
     {
         return $this->sensortypesensortype;
     }
-    /**
-     * @var string
-     */
-    private $description;
-
 
     /**
-     * Set description
+     * Set alarmlevel
      *
-     * @param string $description
+     * @param integer $alarmlevel
      *
      * @return Sensor
      */
-    public function setDescription($description)
+    public function setAlarmlevel($alarmlevel)
     {
-        $this->description = $description;
+        $this->alarmlevel = $alarmlevel;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get alarmlevel
+     *
+     * @return integer
+     */
+    public function getAlarmlevel()
+    {
+        return $this->alarmlevel;
+    }
+
+    /**
+     * Set cautionlevelformula
+     *
+     * @param string $cautionlevelformula
+     *
+     * @return Sensor
+     */
+    public function setCautionlevelformula($cautionlevelformula)
+    {
+        $this->cautionlevelformula = $cautionlevelformula;
+
+        return $this;
+    }
+
+    /**
+     * Get cautionlevelformula
      *
      * @return string
      */
-    public function getDescription()
+    public function getCautionlevelformula()
     {
-        return $this->description;
+        return $this->cautionlevelformula;
+    }
+
+    /**
+     * Set warninglevelformula
+     *
+     * @param string $warninglevelformula
+     *
+     * @return Sensor
+     */
+    public function setWarninglevelformula($warninglevelformula)
+    {
+        $this->warninglevelformula = $warninglevelformula;
+
+        return $this;
+    }
+
+    /**
+     * Get warninglevelformula
+     *
+     * @return string
+     */
+    public function getWarninglevelformula()
+    {
+        return $this->warninglevelformula;
+    }
+
+    /**
+     * Set alertlevelformula
+     *
+     * @param string $alertlevelformula
+     *
+     * @return Sensor
+     */
+    public function setAlertlevelformula($alertlevelformula)
+    {
+        $this->alertlevelformula = $alertlevelformula;
+
+        return $this;
+    }
+
+    /**
+     * Get alertlevelformula
+     *
+     * @return string
+     */
+    public function getAlertlevelformula()
+    {
+        return $this->alertlevelformula;
     }
 }

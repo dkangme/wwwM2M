@@ -197,4 +197,3 @@ class Sensortype
         return $this->idsensortype;
     }
 }
-

@@ -101,6 +101,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_3_layout.html.twig</parameter>
     </parameter>
     <parameter key="monolog.logger.class">Symfony\Bridge\Monolog\Logger</parameter>
     <parameter key="monolog.gelf.publisher.class">Gelf\MessagePublisher</parameter>
@@ -1909,7 +1910,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56d5097ba330b4.78659623</argument>
+            <argument>56d5950d099d16.68744870</argument>
           </service>
         </argument>
       </argument>
@@ -2201,7 +2202,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56d5097ba330b4.78659623</argument>
+            <argument>56d5950d099d16.68744870</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2299,19 +2300,20 @@
       <argument type="collection">
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">twig.controller.exception:showAction</argument>
+        <argument key="date" type="collection">
+          <argument key="format">d.m.Y, H:i:s</argument>
+          <argument key="interval_format">%%d days</argument>
+          <argument key="timezone">America/Santiago</argument>
+        </argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
+          <argument>bootstrap_3_layout.html.twig</argument>
         </argument>
+        <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="autoescape">filename</argument>
         <argument key="cache">/home/dkangme/Documents/GitHub/wwwM2M/www2/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
-        <argument key="date" type="collection">
-          <argument key="format">F j, Y H:i</argument>
-          <argument key="interval_format">%d days</argument>
-          <argument key="timezone">null</argument>
-        </argument>
         <argument key="number_format" type="collection">
           <argument key="decimals">0</argument>
           <argument key="decimal_point">.</argument>
@@ -2427,6 +2429,7 @@
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
                       <argument>form_div_layout.html.twig</argument>
+                      <argument>bootstrap_3_layout.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -2486,9 +2489,9 @@
       </call>
       <configurator method="configure">
         <service class="Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator" public="false">
-          <argument>F j, Y H:i</argument>
-          <argument>%d days</argument>
-          <argument>null</argument>
+          <argument>d.m.Y, H:i:s</argument>
+          <argument>%%d days</argument>
+          <argument>America/Santiago</argument>
           <argument>0</argument>
           <argument>.</argument>
           <argument>,</argument>
@@ -3209,6 +3212,10 @@
       <call method="addPath">
         <argument>/home/dkangme/Documents/GitHub/wwwM2M/www2/src/AuthBundle/Resources/views</argument>
         <argument>Auth</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/dkangme/Documents/GitHub/wwwM2M/www2/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>/home/dkangme/Documents/GitHub/wwwM2M/www2/vendor/friendsofsymfony/user-bundle/Resources/views</argument>

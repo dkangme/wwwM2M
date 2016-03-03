@@ -10,6 +10,7 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
         // line 1
         $this->parent = $this->loadTemplate("base.html.twig", "evento/index.html.twig", 1);
         $this->blocks = array(
+            'breadcumb' => array($this, 'block_breadcumb'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
         );
@@ -22,22 +23,47 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_32beaae29559c0ae0176f88df426d8210cb13c116ec0dc6496d15834425f5084 = $this->env->getExtension("native_profiler");
-        $__internal_32beaae29559c0ae0176f88df426d8210cb13c116ec0dc6496d15834425f5084->enter($__internal_32beaae29559c0ae0176f88df426d8210cb13c116ec0dc6496d15834425f5084_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "evento/index.html.twig"));
+        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669 = $this->env->getExtension("native_profiler");
+        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669->enter($__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "evento/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_32beaae29559c0ae0176f88df426d8210cb13c116ec0dc6496d15834425f5084->leave($__internal_32beaae29559c0ae0176f88df426d8210cb13c116ec0dc6496d15834425f5084_prof);
+        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669->leave($__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669_prof);
 
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_breadcumb($context, array $blocks = array())
     {
-        $__internal_b61d4740a14cd71d5157ba4fb734d68c92ed3cfe6a639f89ad9c7b8407219753 = $this->env->getExtension("native_profiler");
-        $__internal_b61d4740a14cd71d5157ba4fb734d68c92ed3cfe6a639f89ad9c7b8407219753->enter($__internal_b61d4740a14cd71d5157ba4fb734d68c92ed3cfe6a639f89ad9c7b8407219753_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc = $this->env->getExtension("native_profiler");
+        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc->enter($__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "breadcumb"));
 
         // line 4
+        echo "
+<ul class=\"breadcrumb\">
+    <li>
+        <i class=\"icon-home\"></i>
+        <a href=\"/admin/dashboard\">Home</a> 
+    </li>
+    <li><a href=\"/admin/evento\">";
+        // line 10
+        echo $this->env->getExtension('translator')->getTranslator()->trans("Event", array(), "messages");
+        echo "</a></li>
+</ul>
+
+";
+        
+        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc->leave($__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc_prof);
+
+    }
+
+    // line 15
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a = $this->env->getExtension("native_profiler");
+        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a->enter($__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 16
         echo "    <h1>";
         echo $this->env->getExtension('translator')->getTranslator()->trans("Event List", array(), "messages");
         echo "</h1><br/>
@@ -47,32 +73,36 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
             <form class=\"form-inline\">
                 <div class=\"form-group\">
                     <label >";
-        // line 10
+        // line 22
         echo $this->env->getExtension('translator')->getTranslator()->trans("Search", array(), "messages");
         echo "</label>
                     <input type=\"text\" ng-model=\"search\" autofocus=\"autofocus\" class=\"form-control\" placeholder=\"";
-        // line 11
+        // line 23
         echo $this->env->getExtension('translator')->getTranslator()->trans("Type text to search", array(), "messages");
         echo "\">
                     </div>
             </form><br/>
+            <p style=\"color:blue\">";
+        // line 26
+        echo $this->env->getExtension('translator')->getTranslator()->trans("Click on the title of the column \"Time Stamp\" or \"Level\" to sort the contents of the column.", array(), "messages");
+        echo "</p>
             <table class=\"table table-striped table-hover\">
                 <thead>
                     <tr>
                         <th width=\"20%\" ng-click=\"sort('fechaevento')\">";
-        // line 17
+        // line 30
         echo $this->env->getExtension('translator')->getTranslator()->trans("Time Stamp", array(), "messages");
-        // line 18
+        // line 31
         echo "                            <span class=\"glyphicon sort-icon\" ng-show=\"sortKey=='fechaevento'\" ng-class=\"{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}\"></span>
                         </th>
                         <th width=\"20%\" ng-click=\"sort('nivelevento')\">";
-        // line 20
+        // line 33
         echo $this->env->getExtension('translator')->getTranslator()->trans("Level", array(), "messages");
-        // line 21
+        // line 34
         echo "                            <span class=\"glyphicon sort-icon\" ng-show=\"sortKey=='nivelevento'\" ng-class=\"{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}\"></span>
                         </th>
                         <th width=\"60%\">";
-        // line 23
+        // line 36
         echo $this->env->getExtension('translator')->getTranslator()->trans("Event", array(), "messages");
         echo "</th>
                     </tr>
@@ -80,15 +110,15 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
                 <tbody>
                     <tr dir-paginate=\"evento in eventos|orderBy:sortKey:reverse|filter:search|itemsPerPage:10\">
                         <td>";
-        // line 28
+        // line 41
         echo "{{evento.fechaevento.date}}";
         echo "</td>
                         <td>";
-        // line 29
+        // line 42
         echo "{{evento.nivelevento}}";
         echo "</td>
                         <td>";
-        // line 30
+        // line 43
         echo "{{evento.descripcion}}";
         echo "</td>
                     </tr>
@@ -104,30 +134,30 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
     </div>
 ";
         
-        $__internal_b61d4740a14cd71d5157ba4fb734d68c92ed3cfe6a639f89ad9c7b8407219753->leave($__internal_b61d4740a14cd71d5157ba4fb734d68c92ed3cfe6a639f89ad9c7b8407219753_prof);
+        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a->leave($__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a_prof);
 
     }
 
-    // line 44
+    // line 57
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_49cee3587fe0c71855a8f81c7f5ff95d32d03387be49086cea95ca327a10b1f3 = $this->env->getExtension("native_profiler");
-        $__internal_49cee3587fe0c71855a8f81c7f5ff95d32d03387be49086cea95ca327a10b1f3->enter($__internal_49cee3587fe0c71855a8f81c7f5ff95d32d03387be49086cea95ca327a10b1f3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664 = $this->env->getExtension("native_profiler");
+        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664->enter($__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 45
+        // line 58
         echo "
     <script src=\"";
-        // line 46
+        // line 59
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/event.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 47
+        // line 60
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/dirPagination.js"), "html", null, true);
         echo "\"></script>
 
 ";
         
-        $__internal_49cee3587fe0c71855a8f81c7f5ff95d32d03387be49086cea95ca327a10b1f3->leave($__internal_49cee3587fe0c71855a8f81c7f5ff95d32d03387be49086cea95ca327a10b1f3_prof);
+        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664->leave($__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664_prof);
 
     }
 
@@ -143,10 +173,22 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 
     public function getDebugInfo()
     {
-        return array (  125 => 47,  121 => 46,  118 => 45,  112 => 44,  92 => 30,  88 => 29,  84 => 28,  76 => 23,  72 => 21,  70 => 20,  66 => 18,  64 => 17,  55 => 11,  51 => 10,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  155 => 60,  151 => 59,  148 => 58,  142 => 57,  122 => 43,  118 => 42,  114 => 41,  106 => 36,  102 => 34,  100 => 33,  96 => 31,  94 => 30,  87 => 26,  81 => 23,  77 => 22,  67 => 16,  61 => 15,  50 => 10,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
+/* */
+/* {% block breadcumb %}*/
+/* */
+/* <ul class="breadcrumb">*/
+/*     <li>*/
+/*         <i class="icon-home"></i>*/
+/*         <a href="/admin/dashboard">Home</a> */
+/*     </li>*/
+/*     <li><a href="/admin/evento">{%trans%}Event{%endtrans%}</a></li>*/
+/* </ul>*/
+/* */
+/* {% endblock breadcumb %}*/
 /* */
 /* {% block body %}*/
 /*     <h1>{%trans%}Event List{%endtrans%}</h1><br/>*/
@@ -159,6 +201,7 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 /*                     <input type="text" ng-model="search" autofocus="autofocus" class="form-control" placeholder="{%trans%}Type text to search{%endtrans%}">*/
 /*                     </div>*/
 /*             </form><br/>*/
+/*             <p style="color:blue">{%trans%}Click on the title of the column "Time Stamp" or "Level" to sort the contents of the column.{%endtrans%}</p>*/
 /*             <table class="table table-striped table-hover">*/
 /*                 <thead>*/
 /*                     <tr>*/

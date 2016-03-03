@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcumb %}
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/admin/sensor/dashboard">Home</a> 
+    </li>
+</ul>
+
+{% endblock breadcumb %}
+
+{% block body %}
+    <h1>{%trans%}Dashboard{%endtrans%}</h1><br/>
+    <div ng-app="angularTable">
+        <div ng-controller="listdata">
+            <div class="row-fluid hideInIE8 circleStats">
+                
+                    <div class="span2" onTablet="span4" onDesktop="span2" ng-repeat="sensor in sensores">
+                        <div class="circleStatsItemBox green">
+                            <div class="header">{{ '{{sensor.description}}' }}</div>
+                            <span class="percent">{{ '{{sensor.sensortypesensortype.measurement}}' }}</span>
+                            <div class="circleStat">
+                                <input type="text" value="10" class="whiteCircle" data-min="0" data-max="300" data-angleArc="250" data-angleOffset="-125"/>
+                            </div>      
+                            <div class="footer">
+                                <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
+                                </span> 
+                            </div>
+                        </div>
+                    </div>        
+
+                    <div class="span2" onTablet="span4" onDesktop="span2" >
+                        <div class="circleStatsItemBox green">
+                            <div class="header">sddsd</div>
+                            <span class="percent">PPM</span>
+                            <div class="circleStat">
+                                <input type="text" value="10" class="whiteCircle" data-min="0" data-max="300" data-angleArc="250" data-angleOffset="-125"/>
+                            </div>      
+                            <div class="footer">
+                                <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
+                                </span> 
+                            </div>
+                        </div>
+                    </div>                      
+            </div>
+        </div>
+    </div> 
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('js/sensor.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "FOSUserBundle::msa.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="form-signin alert alert-danger"><strong>Error:</strong>{{ error.messageKey|trans(error.messageData, 'security') }} </div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post" class="form">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">Usuario: </label>
+    <input class="form-control focusedInput" autofocus="autofocus" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">Clave: </label>
+    <input type="password" id="password" name="_password" required="required" class="form-control" />
+    <br/>
+    <input type="submit" id="_submit" name="_submit" value="Entrar" />
+</form>
+{% endblock fos_user_content %}

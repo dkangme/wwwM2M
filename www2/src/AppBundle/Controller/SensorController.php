@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Sensor;
 use AppBundle\Form\SensorType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Sensor controller.
@@ -16,6 +17,8 @@ use AppBundle\Form\SensorType;
  */
 class SensorController extends Controller
 {
+
+
     /**
      * Lists all Sensor entities.
      *
@@ -31,6 +34,53 @@ class SensorController extends Controller
         return $this->render('sensor/index.html.twig', array(
             'sensors' => $sensors,
         ));
+    }
+
+    /**
+     * Show Sensor Dashboard 
+     * @Route("/dashboard", name="admin_sensor_dashboard")
+     * @Method("GET")
+     */
+    public function dashboardAction()
+    {
+        return $this->render('sensor/dashboard.html.twig');
+    }
+
+    /**
+     * Lists all Sensor entities, return JSON.
+     *
+     * @Route("/json", name="admin_sensor_json_index")
+     * @Method("GET")
+     */
+    public function jsonSensorAction()
+    {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        // $query = $em->createQuery('
+        //     SELECT p FROM AppBundle:Sensor p
+        //     LEFT JOIN AppBundle:Wei q WITH p.weiwei = q.idwei
+        //     WHERE q.customer = :customerId
+        // ')
+        // ->setParameter('customerId', $user->getCustomercustomer()->getId())
+        // ;
+
+        $query = $em->createQuery('
+            SELECT p FROM AppBundle:Sensor p
+            LEFT JOIN AppBundle:Sensortype q WITH q.idsensortype = p.sensortypesensortype
+            LEFT JOIN AppBundle:Wei r WITH p.weiwei = r.idwei
+            WHERE r.customer = :customerId
+            ')
+            ->setParameter('customerId', $user->getCustomercustomer()->getId());
+
+        $sensores = $query->getArrayResult();
+
+      /*  $respuesta = array (
+            'usuario' => $user->getCustomercustomer()->getId(),
+            'sensores' => $sensores,
+            );*/
+
+        return new JsonResponse($sensores);
     }
 
     /**

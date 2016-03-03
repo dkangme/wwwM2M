@@ -52,4 +52,3 @@ class Sensorhistory
         return $this->sensorsensor;
     }
 }
-

@@ -423,6 +423,28 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_admin_sensor_index:
 
+                // admin_sensor_dashboard
+                if ($pathinfo === '/admin/sensor/dashboard') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_sensor_dashboard;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::dashboardAction',  '_route' => 'admin_sensor_dashboard',);
+                }
+                not_admin_sensor_dashboard:
+
+                // admin_sensor_json_index
+                if ($pathinfo === '/admin/sensor/json') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_sensor_json_index;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::jsonSensorAction',  '_route' => 'admin_sensor_json_index',);
+                }
+                not_admin_sensor_json_index:
+
                 // admin_sensor_new
                 if ($pathinfo === '/admin/sensor/new') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {

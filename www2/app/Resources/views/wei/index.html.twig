@@ -5,29 +5,28 @@
 <ul class="breadcrumb">
     <li>
         <i class="icon-home"></i>
-        <a href="index.html">Home</a> 
-        <i class="icon-angle-right"></i>
+        <a href="/">Home</a> 
     </li>
-    <li><a href="#">Configuration</a><i class="icon-angle-right"></i></li>
-    <li><a href="#">ModWEI</a></li>
+    <li>{%trans%}Configuration{%endtrans%}</li>
+    <li><a href="/admin/wei">ModWEI</a></li>
 </ul>
 
 {% endblock breadcumb %}
 
 
 {% block body %}
-    <h1>Wei list</h1>
+    <h1>{%trans%}MODWEI List{%endtrans%}</h1>
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Nickname</th>
-                <th>Imei</th>
-                <th>Description</th>
-                <th>Operator</th>
-                <th>Customer</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>{%trans%}Nickname{%endtrans%}</th>
+                <th>IMEI</th>
+                <th>{%trans%}Description{%endtrans%}</th>
+                <th>{%trans%}Operator{%endtrans%}</th>
+                <th>{%trans%}Customer{%endtrans%}</th>
+                <th>{%trans%}Status{%endtrans%}</th>
+                <th>{%trans%}Actions{%endtrans%}</th>
             </tr>
         </thead>
         <tbody>
