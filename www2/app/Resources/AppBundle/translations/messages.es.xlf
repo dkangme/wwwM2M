@@ -114,6 +114,26 @@
                 <source>Nickname</source>
                 <target>Nombre</target>
             </trans-unit>
+            <trans-unit id="29">
+                <source>Sensor</source>
+                <target>Sensor</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Alarm Level</source>
+                <target>Nivel de Alarma</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Last Value</source>
+                <target>Último Valor</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Last Report</source>
+                <target>Último Reporte</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>This control panel is refreshed every 10 seconds.</source>
+                <target>Éste panel de control se refresca cada 10 segundos.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

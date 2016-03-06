@@ -23,20 +23,20 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669 = $this->env->getExtension("native_profiler");
-        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669->enter($__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "evento/index.html.twig"));
+        $__internal_5d947fff8f0ed873836d320cbc036d1bc3f5062200a49db3f379e09d008115bd = $this->env->getExtension("native_profiler");
+        $__internal_5d947fff8f0ed873836d320cbc036d1bc3f5062200a49db3f379e09d008115bd->enter($__internal_5d947fff8f0ed873836d320cbc036d1bc3f5062200a49db3f379e09d008115bd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "evento/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669->leave($__internal_ad53b7118090a79bed0b1d9e29f6b51e8b6a2ee21093ce7545333b9bb9d77669_prof);
+        $__internal_5d947fff8f0ed873836d320cbc036d1bc3f5062200a49db3f379e09d008115bd->leave($__internal_5d947fff8f0ed873836d320cbc036d1bc3f5062200a49db3f379e09d008115bd_prof);
 
     }
 
     // line 3
     public function block_breadcumb($context, array $blocks = array())
     {
-        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc = $this->env->getExtension("native_profiler");
-        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc->enter($__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "breadcumb"));
+        $__internal_0027124c624d88f6c78680981a02d6340a2355a2bbf7400e73d7f34b77341897 = $this->env->getExtension("native_profiler");
+        $__internal_0027124c624d88f6c78680981a02d6340a2355a2bbf7400e73d7f34b77341897->enter($__internal_0027124c624d88f6c78680981a02d6340a2355a2bbf7400e73d7f34b77341897_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "breadcumb"));
 
         // line 4
         echo "
@@ -53,15 +53,15 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 
 ";
         
-        $__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc->leave($__internal_6732a6ba8830b78d7abff2277eb316fa9211e4a3e85127b2021ba73214a0a3bc_prof);
+        $__internal_0027124c624d88f6c78680981a02d6340a2355a2bbf7400e73d7f34b77341897->leave($__internal_0027124c624d88f6c78680981a02d6340a2355a2bbf7400e73d7f34b77341897_prof);
 
     }
 
     // line 15
     public function block_body($context, array $blocks = array())
     {
-        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a = $this->env->getExtension("native_profiler");
-        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a->enter($__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_518bedc1618378e53b56dbd4fa9c28ec6a333e36c1ac330770b9b287219a93ec = $this->env->getExtension("native_profiler");
+        $__internal_518bedc1618378e53b56dbd4fa9c28ec6a333e36c1ac330770b9b287219a93ec->enter($__internal_518bedc1618378e53b56dbd4fa9c28ec6a333e36c1ac330770b9b287219a93ec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 16
         echo "    <h1>";
@@ -111,7 +111,7 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
                     <tr dir-paginate=\"evento in eventos|orderBy:sortKey:reverse|filter:search|itemsPerPage:10\">
                         <td>";
         // line 41
-        echo "{{evento.fechaevento.date}}";
+        echo "{{evento.fechaevento}}";
         echo "</td>
                         <td>";
         // line 42
@@ -134,15 +134,15 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
     </div>
 ";
         
-        $__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a->leave($__internal_cef08c480383aebc8b6de9b3df00ea12fb45e26e4d159526922029aab1e4d34a_prof);
+        $__internal_518bedc1618378e53b56dbd4fa9c28ec6a333e36c1ac330770b9b287219a93ec->leave($__internal_518bedc1618378e53b56dbd4fa9c28ec6a333e36c1ac330770b9b287219a93ec_prof);
 
     }
 
     // line 57
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664 = $this->env->getExtension("native_profiler");
-        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664->enter($__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_ee135b88faca10ce682d412bd26998e6faba193afd3e4f6d1b04a4b861e81293 = $this->env->getExtension("native_profiler");
+        $__internal_ee135b88faca10ce682d412bd26998e6faba193afd3e4f6d1b04a4b861e81293->enter($__internal_ee135b88faca10ce682d412bd26998e6faba193afd3e4f6d1b04a4b861e81293_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 58
         echo "
@@ -157,7 +157,7 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 
 ";
         
-        $__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664->leave($__internal_fbe1a8f00cb5b518d451862cca48e6c5e29e4b5c26f63e6c035a7ff3a9b8d664_prof);
+        $__internal_ee135b88faca10ce682d412bd26998e6faba193afd3e4f6d1b04a4b861e81293->leave($__internal_ee135b88faca10ce682d412bd26998e6faba193afd3e4f6d1b04a4b861e81293_prof);
 
     }
 
@@ -216,7 +216,7 @@ class __TwigTemplate_31ddf4ab1668ca09dfb4845ca92f6ffb5b486e90275752319e800ef5021
 /*                 </thead>*/
 /*                 <tbody>*/
 /*                     <tr dir-paginate="evento in eventos|orderBy:sortKey:reverse|filter:search|itemsPerPage:10">*/
-/*                         <td>{{ '{{evento.fechaevento.date}}' }}</td>*/
+/*                         <td>{{ '{{evento.fechaevento}}' }}</td>*/
 /*                         <td>{{ '{{evento.nivelevento}}' }}</td>*/
 /*                         <td>{{ '{{evento.descripcion}}' }}</td>*/
 /*                     </tr>*/

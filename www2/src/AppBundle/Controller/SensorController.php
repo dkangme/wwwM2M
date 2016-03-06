@@ -66,21 +66,38 @@ class SensorController extends Controller
         // ;
 
         $query = $em->createQuery('
-            SELECT p FROM AppBundle:Sensor p
+            SELECT p.humanvalue, p.value, p.lastreport, p.description, p.alarmlevel, q.minvalue, q.maxvalue, q.measurement, q.description as st_desc FROM AppBundle:Sensor p
             LEFT JOIN AppBundle:Sensortype q WITH q.idsensortype = p.sensortypesensortype
             LEFT JOIN AppBundle:Wei r WITH p.weiwei = r.idwei
             WHERE r.customer = :customerId
+            ORDER BY p.alarmlevel DESC
             ')
             ->setParameter('customerId', $user->getCustomercustomer()->getId());
 
         $sensores = $query->getArrayResult();
+
+        $returnValue = [];
+
+        foreach ($sensores as $value) {
+            $returnValue[] = [
+                'humanvalue' => $value['humanvalue'],
+                'value' => $value['value'],
+                'lastreport' => $value['lastreport']->format('d-m-Y H:i'),
+                'description' => $value['description'],
+                'alarmlevel' => $value['alarmlevel'],
+                'minvalue' => $value['minvalue'],
+                'maxvalue' => $value['maxvalue'],
+                'measurement' => $value['measurement'],
+                'st_desc' => $value['st_desc']
+            ];
+        }
 
       /*  $respuesta = array (
             'usuario' => $user->getCustomercustomer()->getId(),
             'sensores' => $sensores,
             );*/
 
-        return new JsonResponse($sensores);
+        return new JsonResponse($returnValue);
     }
 
     /**

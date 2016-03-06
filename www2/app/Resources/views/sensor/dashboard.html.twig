@@ -15,35 +15,39 @@
     <h1>{%trans%}Dashboard{%endtrans%}</h1><br/>
     <div ng-app="angularTable">
         <div ng-controller="listdata">
-            <div class="row-fluid hideInIE8 circleStats">
-                
-                    <div class="span2" onTablet="span4" onDesktop="span2" ng-repeat="sensor in sensores">
-                        <div class="circleStatsItemBox green">
-                            <div class="header">{{ '{{sensor.description}}' }}</div>
-                            <span class="percent">{{ '{{sensor.sensortypesensortype.measurement}}' }}</span>
-                            <div class="circleStat">
-                                <input type="text" value="10" class="whiteCircle" data-min="0" data-max="300" data-angleArc="250" data-angleOffset="-125"/>
-                            </div>      
-                            <div class="footer">
-                                <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
-                                </span> 
-                            </div>
-                        </div>
-                    </div>        
-
-                    <div class="span2" onTablet="span4" onDesktop="span2" >
-                        <div class="circleStatsItemBox green">
-                            <div class="header">sddsd</div>
-                            <span class="percent">PPM</span>
-                            <div class="circleStat">
-                                <input type="text" value="10" class="whiteCircle" data-min="0" data-max="300" data-angleArc="250" data-angleOffset="-125"/>
-                            </div>      
-                            <div class="footer">
-                                <div class="footer" style="font-size: 10px;">Última medición 25-02-2016 18:04</div>
-                                </span> 
-                            </div>
-                        </div>
-                    </div>                      
+            <div class="row-fluid">
+                <p style="color:blue">{%trans%}This control panel is refreshed every 10 seconds.{%endtrans%}</p>
+                <table class="table table-bordered table-striped table-striped dataTable" ng-show="sensores">
+                    <thead>
+                        <tr>
+                            <th>{%trans%}Sensor{%endtrans%}</th>
+                            <th>{%trans%}Alarm Level{%endtrans%}</th>
+                            <th>{%trans%}Last Value{%endtrans%}</th>
+                            <th>{%trans%}Last Report{%endtrans%}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="sensor in sensores">
+                            <td>{{'{{ sensor.description }}'}}</td>
+                            <td ng-switch="{{'{{sensor.alarmlevel}}'}}" align="center" width="20%">
+                                <div ng-switch-when="0">
+                                    <img src="{{asset('img/dot_green.png')}}" width="32px" height="32px"/>
+                                </div>
+                                <div ng-switch-when="1">
+                                    <img src="{{asset('img/dot_yellow.png')}}" width="32px" height="32px"/>
+                                </div>
+                                <div ng-switch-when="2">
+                                    <img src="{{asset('img/dot_orange.png')}}" width="32px" height="32px"/>
+                                </div>
+                                <div ng-switch-when="3">
+                                    <img src="{{asset('img/dot_red.png')}}" width="32px" height="32px"/>
+                                </div>
+                            </td>
+                            <td width="20%">{{'{{sensor.humanvalue}} {{sensor.measurement}}'}}</td>
+                            <td width="20%">{{'{{sensor.lastreport}}'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div> 

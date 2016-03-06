@@ -55,7 +55,18 @@ class EventoController extends Controller
 
         $eventos = $query->getArrayResult();
 
-        return new JsonResponse($eventos);
+        $returnValue = [];
+
+        foreach ($eventos as $value) {
+            $returnValue[] = [
+                'fechaevento' => $value['fechaevento']->format('d-m-Y H:i'),
+                'nivelevento' => $value['nivelevento'],
+                'descripcion' => $value['descripcion'],
+                'idevento' => $value['idevento']
+            ];
+        }
+
+        return new JsonResponse($returnValue);
     }
 
     /**
