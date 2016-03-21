@@ -10,6 +10,7 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
         // line 1
         $this->parent = $this->loadTemplate("base.html.twig", "sensor/dashboard.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'breadcumb' => array($this, 'block_breadcumb'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
@@ -23,22 +24,37 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_28568687c30e3f260c778d27817f00118efccaa44808d78c8d425453fefaf6f0 = $this->env->getExtension("native_profiler");
-        $__internal_28568687c30e3f260c778d27817f00118efccaa44808d78c8d425453fefaf6f0->enter($__internal_28568687c30e3f260c778d27817f00118efccaa44808d78c8d425453fefaf6f0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sensor/dashboard.html.twig"));
+        $__internal_4cb7ceab2c4472178686a0e70c1fb66f39dc22d0f7197079d59e597b4b503ca5 = $this->env->getExtension("native_profiler");
+        $__internal_4cb7ceab2c4472178686a0e70c1fb66f39dc22d0f7197079d59e597b4b503ca5->enter($__internal_4cb7ceab2c4472178686a0e70c1fb66f39dc22d0f7197079d59e597b4b503ca5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sensor/dashboard.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_28568687c30e3f260c778d27817f00118efccaa44808d78c8d425453fefaf6f0->leave($__internal_28568687c30e3f260c778d27817f00118efccaa44808d78c8d425453fefaf6f0_prof);
+        $__internal_4cb7ceab2c4472178686a0e70c1fb66f39dc22d0f7197079d59e597b4b503ca5->leave($__internal_4cb7ceab2c4472178686a0e70c1fb66f39dc22d0f7197079d59e597b4b503ca5_prof);
 
     }
 
     // line 3
-    public function block_breadcumb($context, array $blocks = array())
+    public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_2010389906c546d319bcdf390d4eecc4074307cd1a25a593fa983401f72f14a5 = $this->env->getExtension("native_profiler");
-        $__internal_2010389906c546d319bcdf390d4eecc4074307cd1a25a593fa983401f72f14a5->enter($__internal_2010389906c546d319bcdf390d4eecc4074307cd1a25a593fa983401f72f14a5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "breadcumb"));
+        $__internal_aab5d6ec800ca5d45dd96c630f9dc7b98871fddf6476cd875088e0b6e4a6daa0 = $this->env->getExtension("native_profiler");
+        $__internal_aab5d6ec800ca5d45dd96c630f9dc7b98871fddf6476cd875088e0b6e4a6daa0->enter($__internal_aab5d6ec800ca5d45dd96c630f9dc7b98871fddf6476cd875088e0b6e4a6daa0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
+        echo "
+
+";
+        
+        $__internal_aab5d6ec800ca5d45dd96c630f9dc7b98871fddf6476cd875088e0b6e4a6daa0->leave($__internal_aab5d6ec800ca5d45dd96c630f9dc7b98871fddf6476cd875088e0b6e4a6daa0_prof);
+
+    }
+
+    // line 8
+    public function block_breadcumb($context, array $blocks = array())
+    {
+        $__internal_7b79588aa59be4b661369d54c8eec54d87b5807f01839579ae102291e3ce2c98 = $this->env->getExtension("native_profiler");
+        $__internal_7b79588aa59be4b661369d54c8eec54d87b5807f01839579ae102291e3ce2c98->enter($__internal_7b79588aa59be4b661369d54c8eec54d87b5807f01839579ae102291e3ce2c98_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "breadcumb"));
+
+        // line 9
         echo "
 <ul class=\"breadcrumb\">
     <li>
@@ -49,89 +65,93 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 
 ";
         
-        $__internal_2010389906c546d319bcdf390d4eecc4074307cd1a25a593fa983401f72f14a5->leave($__internal_2010389906c546d319bcdf390d4eecc4074307cd1a25a593fa983401f72f14a5_prof);
+        $__internal_7b79588aa59be4b661369d54c8eec54d87b5807f01839579ae102291e3ce2c98->leave($__internal_7b79588aa59be4b661369d54c8eec54d87b5807f01839579ae102291e3ce2c98_prof);
 
     }
 
-    // line 14
+    // line 19
     public function block_body($context, array $blocks = array())
     {
-        $__internal_60889b9634a8923dc82fc166f6e445e5225bae7d8bc720dcb0d5d048971f6aa9 = $this->env->getExtension("native_profiler");
-        $__internal_60889b9634a8923dc82fc166f6e445e5225bae7d8bc720dcb0d5d048971f6aa9->enter($__internal_60889b9634a8923dc82fc166f6e445e5225bae7d8bc720dcb0d5d048971f6aa9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_88568fb4fe2d289d74ca0f0bbe41ce233a895a9d3b38cb5ac43c7e3cfd849edd = $this->env->getExtension("native_profiler");
+        $__internal_88568fb4fe2d289d74ca0f0bbe41ce233a895a9d3b38cb5ac43c7e3cfd849edd->enter($__internal_88568fb4fe2d289d74ca0f0bbe41ce233a895a9d3b38cb5ac43c7e3cfd849edd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 15
-        echo "    <h1>";
+        // line 20
+        echo "
+    <h1>";
+        // line 21
         echo $this->env->getExtension('translator')->getTranslator()->trans("Dashboard", array(), "messages");
         echo "</h1><br/>
     <div ng-app=\"angularTable\">
         <div ng-controller=\"listdata\">
             <div class=\"row-fluid\">
                 <p style=\"color:blue\">";
-        // line 19
-        echo $this->env->getExtension('translator')->getTranslator()->trans("This control panel is refreshed every 10 seconds.", array(), "messages");
+        // line 25
+        echo $this->env->getExtension('translator')->getTranslator()->trans("This control panel is refreshed every 5 seconds.", array(), "messages");
         echo "</p>
                 <table class=\"table table-bordered table-striped table-striped dataTable\" ng-show=\"sensores\">
                     <thead>
                         <tr>
                             <th>";
-        // line 23
+        // line 29
         echo $this->env->getExtension('translator')->getTranslator()->trans("Sensor", array(), "messages");
         echo "</th>
                             <th>";
-        // line 24
+        // line 30
         echo $this->env->getExtension('translator')->getTranslator()->trans("Alarm Level", array(), "messages");
         echo "</th>
                             <th>";
-        // line 25
+        // line 31
         echo $this->env->getExtension('translator')->getTranslator()->trans("Last Value", array(), "messages");
         echo "</th>
                             <th>";
-        // line 26
+        // line 32
         echo $this->env->getExtension('translator')->getTranslator()->trans("Last Report", array(), "messages");
         echo "</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat=\"sensor in sensores\">
-                            <td>";
-        // line 31
-        echo "{{ sensor.description }}";
-        echo "</td>
+                            <td><a href=\"/admin/sensor/chart/";
+        // line 37
+        echo "{{sensor.idsensor}}";
+        echo "\">";
+        echo "{{sensor.description}}";
+        echo "</a></td>
                             <td ng-switch=\"";
-        // line 32
+        // line 38
         echo "{{sensor.alarmlevel}}";
         echo "\" align=\"center\" width=\"20%\">
                                 <div ng-switch-when=\"0\">
                                     <img src=\"";
-        // line 34
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/dot_green.png"), "html", null, true);
         echo "\" width=\"32px\" height=\"32px\"/>
                                 </div>
                                 <div ng-switch-when=\"1\">
                                     <img src=\"";
-        // line 37
+        // line 43
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/dot_yellow.png"), "html", null, true);
         echo "\" width=\"32px\" height=\"32px\"/>
                                 </div>
                                 <div ng-switch-when=\"2\">
                                     <img src=\"";
-        // line 40
+        // line 46
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/dot_orange.png"), "html", null, true);
         echo "\" width=\"32px\" height=\"32px\"/>
                                 </div>
                                 <div ng-switch-when=\"3\">
                                     <img src=\"";
-        // line 43
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/dot_red.png"), "html", null, true);
         echo "\" width=\"32px\" height=\"32px\"/>
                                 </div>
                             </td>
                             <td width=\"20%\">";
-        // line 46
+        // line 52
         echo "{{sensor.humanvalue}} {{sensor.measurement}}";
         echo "</td>
                             <td width=\"20%\">";
-        // line 47
+        // line 53
         echo "{{sensor.lastreport}}";
         echo "</td>
                         </tr>
@@ -141,29 +161,30 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
         </div>
     </div> 
 
+    
 
 ";
         
-        $__internal_60889b9634a8923dc82fc166f6e445e5225bae7d8bc720dcb0d5d048971f6aa9->leave($__internal_60889b9634a8923dc82fc166f6e445e5225bae7d8bc720dcb0d5d048971f6aa9_prof);
+        $__internal_88568fb4fe2d289d74ca0f0bbe41ce233a895a9d3b38cb5ac43c7e3cfd849edd->leave($__internal_88568fb4fe2d289d74ca0f0bbe41ce233a895a9d3b38cb5ac43c7e3cfd849edd_prof);
 
     }
 
-    // line 58
+    // line 65
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_460e258d5a3178b0871593a814e157eabfbaf72995ed955e627cce5b38228a64 = $this->env->getExtension("native_profiler");
-        $__internal_460e258d5a3178b0871593a814e157eabfbaf72995ed955e627cce5b38228a64->enter($__internal_460e258d5a3178b0871593a814e157eabfbaf72995ed955e627cce5b38228a64_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_13b9345a0cb9fcc7feba972f1f1947bdcea47a0872cf6a7490797fc782eed622 = $this->env->getExtension("native_profiler");
+        $__internal_13b9345a0cb9fcc7feba972f1f1947bdcea47a0872cf6a7490797fc782eed622->enter($__internal_13b9345a0cb9fcc7feba972f1f1947bdcea47a0872cf6a7490797fc782eed622_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 59
+        // line 66
         echo "
     <script src=\"";
-        // line 60
+        // line 67
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/sensor.js"), "html", null, true);
         echo "\"></script>
 
 ";
         
-        $__internal_460e258d5a3178b0871593a814e157eabfbaf72995ed955e627cce5b38228a64->leave($__internal_460e258d5a3178b0871593a814e157eabfbaf72995ed955e627cce5b38228a64_prof);
+        $__internal_13b9345a0cb9fcc7feba972f1f1947bdcea47a0872cf6a7490797fc782eed622->leave($__internal_13b9345a0cb9fcc7feba972f1f1947bdcea47a0872cf6a7490797fc782eed622_prof);
 
     }
 
@@ -179,10 +200,15 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 
     public function getDebugInfo()
     {
-        return array (  161 => 60,  158 => 59,  152 => 58,  135 => 47,  131 => 46,  125 => 43,  119 => 40,  113 => 37,  107 => 34,  102 => 32,  98 => 31,  90 => 26,  86 => 25,  82 => 24,  78 => 23,  71 => 19,  63 => 15,  57 => 14,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  182 => 67,  179 => 66,  173 => 65,  155 => 53,  151 => 52,  145 => 49,  139 => 46,  133 => 43,  127 => 40,  122 => 38,  116 => 37,  108 => 32,  104 => 31,  100 => 30,  96 => 29,  89 => 25,  82 => 21,  79 => 20,  73 => 19,  58 => 9,  52 => 8,  43 => 4,  37 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
+/* */
+/* {% block stylesheets %}*/
+/* */
+/* */
+/* {% endblock stylesheets %}*/
 /* */
 /* {% block breadcumb %}*/
 /* */
@@ -196,11 +222,12 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 /* {% endblock breadcumb %}*/
 /* */
 /* {% block body %}*/
+/* */
 /*     <h1>{%trans%}Dashboard{%endtrans%}</h1><br/>*/
 /*     <div ng-app="angularTable">*/
 /*         <div ng-controller="listdata">*/
 /*             <div class="row-fluid">*/
-/*                 <p style="color:blue">{%trans%}This control panel is refreshed every 10 seconds.{%endtrans%}</p>*/
+/*                 <p style="color:blue">{%trans%}This control panel is refreshed every 5 seconds.{%endtrans%}</p>*/
 /*                 <table class="table table-bordered table-striped table-striped dataTable" ng-show="sensores">*/
 /*                     <thead>*/
 /*                         <tr>*/
@@ -212,7 +239,7 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 /*                     </thead>*/
 /*                     <tbody>*/
 /*                         <tr ng-repeat="sensor in sensores">*/
-/*                             <td>{{'{{ sensor.description }}'}}</td>*/
+/*                             <td><a href="/admin/sensor/chart/{{'{{sensor.idsensor}}'}}">{{'{{sensor.description}}'}}</a></td>*/
 /*                             <td ng-switch="{{'{{sensor.alarmlevel}}'}}" align="center" width="20%">*/
 /*                                 <div ng-switch-when="0">*/
 /*                                     <img src="{{asset('img/dot_green.png')}}" width="32px" height="32px"/>*/
@@ -236,6 +263,7 @@ class __TwigTemplate_8689f0b3d6d55d260c24f54d1fd6d9906829961bd0d695064fe774f4951
 /*         </div>*/
 /*     </div> */
 /* */
+/*     */
 /* */
 /* {% endblock %}*/
 /* */

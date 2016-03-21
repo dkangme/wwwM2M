@@ -90,20 +90,26 @@
                         <ul class="nav nav-tabs nav-stacked main-menu">
                             <li><a href="/admin/sensor/dashboard"><i class="icon-dashboard"></i><span class="hidden-tablet"> {% trans %}Dashboard{% endtrans %}</span></a></li>   
                             <li><a href="/admin/evento"><i class="icon-exclamation-sign"></i><span class="hidden-tablet"> {% trans %}Events{% endtrans %}</span></a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
                             <li><a href="messages.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> {% trans %}Reports{% endtrans %}</span></a></li>
-                            
+                            {% endif %}
                             <li>
                                 <a class="dropmenu" href="#"><i class="icon-cogs"></i><span class="hidden-tablet"> {%trans%}Configuration{%endtrans%}</span></a>
                                 <ul>
+                                    {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="ui.html"><i class="icon-user"></i><span class="hidden-tablet"> {%trans%}Users{%endtrans%}</span></a></li>
+
                                     <li><a class="submenu" href="/admin/customer"><i class="icon-group"></i><span class="hidden-tablet"> {%trans%}Customers{%endtrans%}</span></a></li>
+                                    {% endif %}
+                                    
                                     <li><a class="submenu" href="/admin/wei"><i class="icon-rss"></i><span class="hidden-tablet"> MODWEI</span></a></li>
                                     <li><a class="submenu" href="/admin/sensor"><i class="icon-stethoscope"></i><span class="hidden-tablet"> {%trans%}Sensors{%endtrans%}</span></a></li>
 
-                                    <li><a class="submenu" href="submenu3.html"><i class="icon-bullhorn"></i><span class="hidden-tablet"> {%trans%}Set Alarms{%endtrans%}</span></a></li>
+                                    <li><a class="submenu" href="/admin/alarm"><i class="icon-bullhorn"></i><span class="hidden-tablet"> {%trans%}Set Alarms{%endtrans%}</span></a></li>
+                                    <li><a class="submenu" href="/admin/notificationlist/"><i class="icon-envelope-alt"></i><span class="hidden-tablet"> {%trans%}Notification Lists{%endtrans%}</span></a></li>
                                 </ul>   
                             </li>
-                            <li><a href="login.html"><i class="icon-signout"></i><span class="hidden-tablet"> {%trans%}Logout{%endtrans%}</span></a></li>
+                            <li><a href="/logout"><i class="icon-signout"></i><span class="hidden-tablet"> {%trans%}Logout{%endtrans%}</span></a></li>
                         </ul>
                     </div>
                 </div>

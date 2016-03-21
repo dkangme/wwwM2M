@@ -1,0 +1,40 @@
+AppBundle\Entity\Sensorhistory:
+    type: entity
+    table: SensorHistory
+    indexes:
+        fk_SensorHistory_Sensor1_idx:
+            columns:
+                - Sensor_idSensor
+    id:
+        idsensorhistory:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idSensorHistory
+            generator:
+                strategy: IDENTITY
+    fields:
+        humanvalue:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: humanValue
+        timestamp:
+            type: datetime
+            nullable: false
+            column: timeStamp
+    manyToOne:
+        sensorsensor:
+            targetEntity: Sensor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Sensor_idSensor:
+                    referencedColumnName: idSensor
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

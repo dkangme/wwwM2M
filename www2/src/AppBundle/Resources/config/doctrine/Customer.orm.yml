@@ -1,0 +1,63 @@
+AppBundle\Entity\Customer:
+    type: entity
+    table: Customer
+    indexes:
+        fk_Customer_Comuna1_idx:
+            columns:
+                - Comuna_idComuna
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        razonsocial:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+            column: razonSocial
+        nombre:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+        direccioncomercial:
+            type: string
+            nullable: false
+            length: 256
+            options:
+                fixed: false
+            column: direccionComercial
+        telefonocontacto:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: telefonoContacto
+        emailcontacto:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: emailContacto
+    manyToOne:
+        comunacomuna:
+            targetEntity: Comuna
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Comuna_idComuna:
+                    referencedColumnName: idComuna
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

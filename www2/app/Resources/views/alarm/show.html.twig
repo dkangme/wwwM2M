@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alarm</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Expression</th>
+                <td>{{ alarm.expression }}</td>
+            </tr>
+            <tr>
+                <th>Lastalarm</th>
+                <td>{% if alarm.lastalarm %}{{ alarm.lastalarm|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nextalarminterval</th>
+                <td>{{ alarm.nextalarminterval }}</td>
+            </tr>
+            <tr>
+                <th>Alarmlevel</th>
+                <td>{{ alarm.alarmlevel }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ alarm.description }}</td>
+            </tr>
+            <tr>
+                <th>Idalarm</th>
+                <td>{{ alarm.idalarm }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_alarm_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_alarm_edit', { 'id': alarm.idalarm }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

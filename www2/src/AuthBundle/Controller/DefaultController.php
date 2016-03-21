@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AuthBundle:Default:index.html.twig');
+        return $this->redirectToRoute('admin_sensor_dashboard');
     }
 }

@@ -21,20 +21,20 @@ class __TwigTemplate_cd9f2b39ef7d3c8030502faa45d50a3e5bc24630122aec6bfa44bdba4b5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ce909f0f632feba7f1d1e7e8b4abee3e17032c7eb95c4e83e759c1006361d9e6 = $this->env->getExtension("native_profiler");
-        $__internal_ce909f0f632feba7f1d1e7e8b4abee3e17032c7eb95c4e83e759c1006361d9e6->enter($__internal_ce909f0f632feba7f1d1e7e8b4abee3e17032c7eb95c4e83e759c1006361d9e6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":sensor:new.html.twig"));
+        $__internal_a1dbca270a9670dc1be121ec832c026bbaf0f9321bbb9d427caa5db302587fec = $this->env->getExtension("native_profiler");
+        $__internal_a1dbca270a9670dc1be121ec832c026bbaf0f9321bbb9d427caa5db302587fec->enter($__internal_a1dbca270a9670dc1be121ec832c026bbaf0f9321bbb9d427caa5db302587fec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":sensor:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ce909f0f632feba7f1d1e7e8b4abee3e17032c7eb95c4e83e759c1006361d9e6->leave($__internal_ce909f0f632feba7f1d1e7e8b4abee3e17032c7eb95c4e83e759c1006361d9e6_prof);
+        $__internal_a1dbca270a9670dc1be121ec832c026bbaf0f9321bbb9d427caa5db302587fec->leave($__internal_a1dbca270a9670dc1be121ec832c026bbaf0f9321bbb9d427caa5db302587fec_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ebb603aaa7db69594c0136d24e20460e06c6186a2a15b8917a38ecc41ab84163 = $this->env->getExtension("native_profiler");
-        $__internal_ebb603aaa7db69594c0136d24e20460e06c6186a2a15b8917a38ecc41ab84163->enter($__internal_ebb603aaa7db69594c0136d24e20460e06c6186a2a15b8917a38ecc41ab84163_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_d21d935d3840706d010f32d35f6dc013ef29fa7f7400760b73b7626d7d0a1e27 = $this->env->getExtension("native_profiler");
+        $__internal_d21d935d3840706d010f32d35f6dc013ef29fa7f7400760b73b7626d7d0a1e27->enter($__internal_d21d935d3840706d010f32d35f6dc013ef29fa7f7400760b73b7626d7d0a1e27_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Sensor creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_cd9f2b39ef7d3c8030502faa45d50a3e5bc24630122aec6bfa44bdba4b5
     </ul>
 ";
         
-        $__internal_ebb603aaa7db69594c0136d24e20460e06c6186a2a15b8917a38ecc41ab84163->leave($__internal_ebb603aaa7db69594c0136d24e20460e06c6186a2a15b8917a38ecc41ab84163_prof);
+        $__internal_d21d935d3840706d010f32d35f6dc013ef29fa7f7400760b73b7626d7d0a1e27->leave($__internal_d21d935d3840706d010f32d35f6dc013ef29fa7f7400760b73b7626d7d0a1e27_prof);
 
     }
 

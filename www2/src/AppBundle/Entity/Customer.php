@@ -2,46 +2,81 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Customer
+ *
+ * @ORM\Table(name="Customer", indexes={@ORM\Index(name="fk_Customer_Comuna1_idx", columns={"Comuna_idComuna"})})
+ * @ORM\Entity
  */
 class Customer
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="razonSocial", type="string", length=128, nullable=false)
      */
     private $razonsocial;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=128, nullable=false)
      */
     private $nombre;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="direccionComercial", type="string", length=256, nullable=false)
      */
     private $direccioncomercial;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="telefonoContacto", type="string", length=32, nullable=true)
      */
     private $telefonocontacto;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="emailContacto", type="string", length=32, nullable=true)
      */
     private $emailcontacto;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \AppBundle\Entity\Comuna
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Comuna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Comuna_idComuna", referencedColumnName="idComuna")
+     * })
      */
     private $comunacomuna;
 
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set razonsocial
@@ -164,16 +199,6 @@ class Customer
     }
 
     /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set comunacomuna
      *
      * @param \AppBundle\Entity\Comuna $comunacomuna
@@ -197,4 +222,3 @@ class Customer
         return $this->comunacomuna;
     }
 }
-

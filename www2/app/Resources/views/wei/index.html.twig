@@ -23,8 +23,7 @@
                 <th>{%trans%}Nickname{%endtrans%}</th>
                 <th>IMEI</th>
                 <th>{%trans%}Description{%endtrans%}</th>
-                <th>{%trans%}Operator{%endtrans%}</th>
-                <th>{%trans%}Customer{%endtrans%}</th>
+                <th>{%trans%}Telephone operator{%endtrans%}</th>
                 <th>{%trans%}Status{%endtrans%}</th>
                 <th>{%trans%}Actions{%endtrans%}</th>
             </tr>
@@ -36,17 +35,9 @@
                 <td>{{ wei.imei }}</td>
                 <td>{{ wei.description }}</td>
                 <td>{{ wei.operator }}</td>
-                <td>{{ wei.customer.nombre }}</td>
                 <td>{{ wei.ModweiStatus.description }}
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_wei_show', { 'id': wei.idwei }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}">edit</a>
-                        </li>
-                    </ul>
+                <td>                    
+                    <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}"><i class="icon-pencil"></i> {%trans%}edit{%endtrans%}</a>
                 </td>
             </tr>
         {% endfor %}
@@ -55,7 +46,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_wei_new') }}">Create a new entry</a>
+            <a href="{{ path('admin_wei_new') }}">{%trans%}Create a new MODWEI{%endtrans%}</a>
         </li>
     </ul>
 {% endblock %}

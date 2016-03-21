@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{%trans%}Alarm list{%endtrans%}</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Sensor</th>
+                <th>Expression</th>
+                <th>Nextalarminterval</th>
+                <th>Alarmlevel</th>
+                <th>Description</th>
+                <th>Idalarm</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alarm in alarms %}
+            <tr>
+                <td>{{ alarm.sensorsensor.description }}</td>
+                <td><a href="{{ path('admin_alarm_show', { 'id': alarm.idalarm }) }}">{{ alarm.expression }}</a></td>
+                <td>{{ alarm.nextalarminterval }}</td>
+                <td>{{ alarm.alarmlevel }}</td>
+                <td>{{ alarm.description }}</td>
+                <td>{{ alarm.idalarm }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_alarm_show', { 'id': alarm.idalarm }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_alarm_edit', { 'id': alarm.idalarm }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_alarm_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

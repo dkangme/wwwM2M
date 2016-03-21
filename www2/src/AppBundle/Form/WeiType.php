@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class WeiType extends AbstractType
 {
@@ -16,16 +18,30 @@ class WeiType extends AbstractType
     {
         $builder
             ->add('nickname')
-            ->add('lastreport', 'datetime')
-            ->add('imei')
+            //->add('lastreport', 'datetime')
+            ->add('imei', TextType::class, array(
+                'label'=>'IMEI'
+            ))
             ->add('description')
-            ->add('operator')
-            ->add('activationdate', 'datetime')
-            ->add('modificationdate', 'datetime')
-            ->add('chipnumber')
-            ->add('modweiStatus')
-            ->add('locationlocation')
-            ->add('customer')
+            ->add('operator', TextType::class, array(
+                'label'=>'Telephone operator'
+            ))
+            //->add('activationdate', 'datetime')
+            //->add('modificationdate', 'datetime')
+            ->add('chipnumber', TextType::class, array(
+                'label'=>'SIM Number'
+            ))
+            ->add('modweiStatus', EntityType::class, array(
+                'class'=>'AppBundle:ModweiStatus',
+                'choice_label'=>'description',
+                'label'=>'Status'
+            ))
+            ->add('locationlocation', EntityType::class, array(
+                'class'=>'AppBundle:Location',
+                'choice_label'=>'descrip',
+                'label'=>'Location'
+            ))
+            //->add('customer')
         ;
     }
     

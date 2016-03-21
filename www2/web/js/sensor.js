@@ -16,7 +16,7 @@ app.controller('listdata',function($scope, $http, $timeout){
 			$scope.getData();
 			$scope.intervalFunction();
 
-		}, 10000);
+		}, 5000);
 	};
 
 	$scope.intervalFunction();

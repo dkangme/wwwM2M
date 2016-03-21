@@ -1,0 +1,31 @@
+AppBundle\Entity\Notificationtype:
+    type: entity
+    table: notificationType
+    uniqueConstraints:
+        type_UNIQUE:
+            columns:
+                - type
+    id:
+        idnotificationtype:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idnotificationType
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        remarks:
+            type: string
+            nullable: true
+            length: 1024
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

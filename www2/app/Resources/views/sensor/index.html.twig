@@ -3,25 +3,33 @@
 {% block body %}
     <h1>Sensor list</h1>
 
-    <table class="table table-striped table-bordered">
+    <table class="table">
         <thead>
             <tr>
+                <th>Idsensor</th>
                 <th>Humanvalue</th>
                 <th>Value</th>
                 <th>Lastreport</th>
                 <th>Description</th>
-                <th>Idsensor</th>
+                <th>Alarmlevel</th>
+                <th>Formula</th>
+                <th>Channelid</th>
+                <th>Savehistoryevery</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for sensor in sensors %}
             <tr>
-                <td><a href="{{ path('admin_sensor_show', { 'id': sensor.idsensor }) }}">{{ sensor.humanvalue }}</a></td>
+                <td><a href="{{ path('admin_sensor_show', { 'id': sensor.idsensor }) }}">{{ sensor.idsensor }}</a></td>
+                <td>{{ sensor.humanvalue }}</td>
                 <td>{{ sensor.value }}</td>
                 <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ sensor.description }}</td>
-                <td>{{ sensor.idsensor }}</td>
+                <td>{{ sensor.alarmlevel }}</td>
+                <td>{{ sensor.formula }}</td>
+                <td>{{ sensor.channelid }}</td>
+                <td>{{ sensor.savehistoryevery }}</td>
                 <td>
                     <ul>
                         <li>

@@ -1,21 +1,33 @@
 {% extends 'base.html.twig' %}
 
+{% block breadcumb %}
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/">Home</a> 
+    </li>
+    <li>{%trans%}Configuration{%endtrans%}</li>
+    <li><a href="/admin/wei">ModWEI</a></li>
+    <li><a href="#">{%trans%}Edit{%endtrans%}</a></li>
+</ul>
+
+{% endblock breadcumb %}
+
 {% block body %}
-    <h1>Wei edit</h1>
+    <div class="row">
+        
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <h1>{%trans%}MODWEI edit{%endtrans%}</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input type="submit" value="{%trans%}Edit{%endtrans%}" />
+            {{ form_end(edit_form) }}
+            <br/>
+             <a href="{{ path('admin_wei_index') }}"><i class="icon-circle-arrow-left"></i> {%trans%}Back to the list{%endtrans%}</a>
+        </div>
+    </div>
+   
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_wei_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

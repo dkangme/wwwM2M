@@ -1,0 +1,61 @@
+AppBundle\Entity\Alarm:
+    type: entity
+    table: Alarm
+    indexes:
+        fk_Alarm_Sensor1_idx:
+            columns:
+                - Sensor_idSensor
+    id:
+        idalarm:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idAlarm
+            generator:
+                strategy: IDENTITY
+    fields:
+        expression:
+            type: string
+            nullable: true
+            length: 256
+            options:
+                fixed: false
+                default: (%s==1)
+        lastalarm:
+            type: datetime
+            nullable: true
+            column: lastAlarm
+        nextalarminterval:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '10'
+            column: nextAlarmInterval
+        alarmlevel:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+            column: alarmLevel
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        sensorsensor:
+            targetEntity: Sensor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Sensor_idSensor:
+                    referencedColumnName: idSensor
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

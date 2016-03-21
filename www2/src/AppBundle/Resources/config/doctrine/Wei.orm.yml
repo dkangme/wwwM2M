@@ -1,0 +1,107 @@
+AppBundle\Entity\Wei:
+    type: entity
+    table: WEI
+    indexes:
+        fk_WEI_Location_idx:
+            columns:
+                - Location_idLocation
+        fk_WEI_ModWei_Status1_idx:
+            columns:
+                - ModWei_Status_id
+        fk_WEI_Customer1_idx:
+            columns:
+                - Customer_id
+    uniqueConstraints:
+        nickName_UNIQUE:
+            columns:
+                - nickName
+    id:
+        idwei:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idWEI
+            generator:
+                strategy: IDENTITY
+    fields:
+        nickname:
+            type: string
+            nullable: false
+            length: 24
+            options:
+                fixed: false
+            column: nickName
+        lastreport:
+            type: datetime
+            nullable: true
+            column: lastReport
+        imei:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+            column: IMEI
+        description:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+            column: Description
+        operator:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Operator
+        activationdate:
+            type: datetime
+            nullable: true
+            column: activationDate
+        modificationdate:
+            type: datetime
+            nullable: true
+            column: modificationDate
+        chipnumber:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: chipNumber
+    manyToOne:
+        customer:
+            targetEntity: Customer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Customer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        locationlocation:
+            targetEntity: Location
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Location_idLocation:
+                    referencedColumnName: idLocation
+            orphanRemoval: false
+        modweiStatus:
+            targetEntity: ModweiStatus
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ModWei_Status_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -52,16 +52,18 @@ class WeiController extends Controller
      */
     public function newAction(Request $request)
     {
+        $user = $this->getUser();
         $wei = new Wei();
         $form = $this->createForm('AppBundle\Form\WeiType', $wei);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $wei->setCustomer($user->getCustomercustomer());
             $em->persist($wei);
             $em->flush();
 
-            return $this->redirectToRoute('admin_wei_show', array('id' => $wei->getId()));
+            return $this->redirectToRoute('admin_wei_show', array('id' => $wei->getIdwei()));
         }
 
         return $this->render('wei/new.html.twig', array(
@@ -103,7 +105,7 @@ class WeiController extends Controller
             $em->persist($wei);
             $em->flush();
 
-            return $this->redirectToRoute('admin_wei_edit', array('id' => $wei->getId()));
+            return $this->redirectToRoute('admin_wei_edit', array('id' => $wei->getIdwei()));
         }
 
         return $this->render('wei/edit.html.twig', array(
@@ -143,7 +145,7 @@ class WeiController extends Controller
     private function createDeleteForm(Wei $wei)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_wei_delete', array('id' => $wei->getId())))
+            ->setAction($this->generateUrl('admin_wei_delete', array('id' => $wei->getIdwei())))
             ->setMethod('DELETE')
             ->getForm()
         ;

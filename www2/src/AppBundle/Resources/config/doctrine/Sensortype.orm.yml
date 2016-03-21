@@ -1,0 +1,83 @@
+AppBundle\Entity\Sensortype:
+    type: entity
+    table: SensorType
+    id:
+        idsensortype:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idSensorType
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: Name
+        description:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+            column: Description
+        standard:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Standard
+        minvalue:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: minValue
+        maxvalue:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: maxValue
+        measurement:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: PPM
+        cautionlevelformula:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: '%s*1'
+            column: cautionLevelFormula
+        warninglevelformula:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: '%s*1'
+            column: warningLevelFormula
+        alertlevelformula:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: '%s*1'
+            column: alertLevelFormula
+    lifecycleCallbacks: {  }

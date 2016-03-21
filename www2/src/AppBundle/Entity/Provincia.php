@@ -2,26 +2,53 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Provincia
+ *
+ * @ORM\Table(name="Provincia", indexes={@ORM\Index(name="fk_Provincia_Region1_idx", columns={"Region_idRegion"})})
+ * @ORM\Entity
  */
 class Provincia
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombreProvincia", type="string", length=128, nullable=false)
      */
     private $nombreprovincia;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idProvincia", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idprovincia;
 
     /**
      * @var \AppBundle\Entity\Region
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Region_idRegion", referencedColumnName="idRegion")
+     * })
      */
     private $regionregion;
 
+
+
+    /**
+     * Get idprovincia
+     *
+     * @return integer
+     */
+    public function getIdprovincia()
+    {
+        return $this->idprovincia;
+    }
 
     /**
      * Set nombreprovincia
@@ -48,16 +75,6 @@ class Provincia
     }
 
     /**
-     * Get idprovincia
-     *
-     * @return integer
-     */
-    public function getIdprovincia()
-    {
-        return $this->idprovincia;
-    }
-
-    /**
      * Set regionregion
      *
      * @param \AppBundle\Entity\Region $regionregion
@@ -81,4 +98,3 @@ class Provincia
         return $this->regionregion;
     }
 }
-

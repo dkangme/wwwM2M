@@ -1,0 +1,37 @@
+AppBundle\Entity\Provincia:
+    type: entity
+    table: Provincia
+    indexes:
+        fk_Provincia_Region1_idx:
+            columns:
+                - Region_idRegion
+    id:
+        idprovincia:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idProvincia
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombreprovincia:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+            column: nombreProvincia
+    manyToOne:
+        regionregion:
+            targetEntity: Region
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Region_idRegion:
+                    referencedColumnName: idRegion
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,146 @@
+AppBundle\Entity\AuthUser:
+    type: entity
+    table: auth_user
+    indexes:
+        IDX_A3B536FDD29AA452:
+            columns:
+                - idCustomer
+    uniqueConstraints:
+        UNIQ_A3B536FD92FC23A8:
+            columns:
+                - username_canonical
+        UNIQ_A3B536FDA0D96FBF:
+            columns:
+                - email_canonical
+        UNIQ_A3B536FD7B495A69:
+            columns:
+                - cell_phone
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        usernameCanonical:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: username_canonical
+        email:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        emailCanonical:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: email_canonical
+        enabled:
+            type: boolean
+            nullable: false
+        salt:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        locked:
+            type: boolean
+            nullable: false
+        expired:
+            type: boolean
+            nullable: false
+        expiresAt:
+            type: datetime
+            nullable: true
+            column: expires_at
+        confirmationToken:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: confirmation_token
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
+        roles:
+            type: array
+            nullable: false
+            length: null
+            options:
+                fixed: false
+        credentialsExpired:
+            type: boolean
+            nullable: false
+            column: credentials_expired
+        credentialsExpireAt:
+            type: datetime
+            nullable: true
+            column: credentials_expire_at
+        nombres:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: false
+        apellidoP:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: false
+            column: apellido_p
+        apellidoM:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: false
+            column: apellido_m
+        cellPhone:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+            column: cell_phone
+    manyToOne:
+        idcustomer:
+            targetEntity: Customer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idCustomer:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

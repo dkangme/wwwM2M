@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1>Sensor list</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Idsensor</th>
+                    <th>Humanvalue</th>
+                    <th>Value</th>
+                    <th>Lastreport</th>
+                    <th>Description</th>
+                    <th>Alarmlevel</th>
+                    <th>Formula</th>
+                    <th>Channelid</th>
+                    <th>Savehistoryevery</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for sensor in sensors %}
+                <tr>
+                    <td><a href="{{ path('data_sensor_show', { 'id': sensor.idsensor }) }}">{{ sensor.idsensor }}</a></td>
+                    <td>{{ sensor.humanvalue }}</td>
+                    <td>{{ sensor.value }}</td>
+                    <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ sensor.description }}</td>
+                    <td>{{ sensor.alarmlevel }}</td>
+                    <td>{{ sensor.formula }}</td>
+                    <td>{{ sensor.channelid }}</td>
+                    <td>{{ sensor.savehistoryevery }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('data_sensor_show', { 'id': sensor.idsensor }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('data_sensor_edit', { 'id': sensor.idsensor }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('data_sensor_new') }}">Create a new entry</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

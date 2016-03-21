@@ -176,6 +176,21 @@ class Location extends \AppBundle\Entity\Location implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getIdlocation()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getIdlocation();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlocation', []);
+
+        return parent::getIdlocation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setDescrip($descrip)
     {
 
@@ -215,21 +230,6 @@ class Location extends \AppBundle\Entity\Location implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLatlon', []);
 
         return parent::getLatlon();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getIdlocation()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdlocation();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlocation', []);
-
-        return parent::getIdlocation();
     }
 
 }

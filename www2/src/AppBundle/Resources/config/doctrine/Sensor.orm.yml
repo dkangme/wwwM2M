@@ -1,0 +1,98 @@
+AppBundle\Entity\Sensor:
+    type: entity
+    table: Sensor
+    repositoryClass: AppBundle\Entity\SensorRepository
+    indexes:
+        fk_Sensor_WEI1_idx:
+            columns:
+                - WEI_idWEI
+        fk_Sensor_SensorType1_idx:
+            columns:
+                - SensorType_idSensorType
+    id:
+        idsensor:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idSensor
+            generator:
+                strategy: IDENTITY
+    fields:
+        humanvalue:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: humanValue
+        value:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: Value
+        lastreport:
+            type: datetime
+            nullable: false
+            column: lastReport
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Description
+        alarmlevel:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: alarmLevel
+        formula:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: '%s*1'
+        channelid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+            column: channelId
+        savehistoryevery:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '5'
+            column: saveHistoryEvery
+    manyToOne:
+        sensortypesensortype:
+            targetEntity: Sensortype
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SensorType_idSensorType:
+                    referencedColumnName: idSensorType
+            orphanRemoval: false
+        weiwei:
+            targetEntity: Wei
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                WEI_idWEI:
+                    referencedColumnName: idWEI
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

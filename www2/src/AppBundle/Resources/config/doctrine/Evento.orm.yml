@@ -1,0 +1,47 @@
+AppBundle\Entity\Evento:
+    type: entity
+    table: Evento
+    indexes:
+        fk_Evento_Customer1_idx:
+            columns:
+                - Customer_id
+    id:
+        idevento:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idEvento
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechaevento:
+            type: datetime
+            nullable: false
+            column: fechaEvento
+        nivelevento:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+            column: nivelEvento
+        descripcion:
+            type: string
+            nullable: false
+            length: 256
+            options:
+                fixed: false
+    manyToOne:
+        customer:
+            targetEntity: Customer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Customer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

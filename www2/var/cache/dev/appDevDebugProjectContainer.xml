@@ -1910,7 +1910,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56dbaca624a8b2.12528174</argument>
+            <argument>56e58318041ea7.89728680</argument>
           </service>
         </argument>
       </argument>
@@ -2202,7 +2202,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56dbaca624a8b2.12528174</argument>
+            <argument>56e58318041ea7.89728680</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2305,6 +2305,11 @@
           <argument key="interval_format">%%d days</argument>
           <argument key="timezone">America/Santiago</argument>
         </argument>
+        <argument key="number_format" type="collection">
+          <argument key="decimals">2</argument>
+          <argument key="decimal_point">,</argument>
+          <argument key="thousands_separator">.</argument>
+        </argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
           <argument>bootstrap_3_layout.html.twig</argument>
@@ -2314,11 +2319,6 @@
         <argument key="cache">/home/dkangme/Documents/GitHub/wwwM2M/www2/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
-        <argument key="number_format" type="collection">
-          <argument key="decimals">0</argument>
-          <argument key="decimal_point">.</argument>
-          <argument key="thousands_separator">,</argument>
-        </argument>
       </argument>
       <call method="addExtension">
         <argument type="service">
@@ -2492,9 +2492,9 @@
           <argument>d.m.Y, H:i:s</argument>
           <argument>%%d days</argument>
           <argument>America/Santiago</argument>
-          <argument>0</argument>
-          <argument>.</argument>
+          <argument>2</argument>
           <argument>,</argument>
+          <argument>.</argument>
         </service>
       </configurator>
     </service>
@@ -2675,7 +2675,7 @@
               <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
                 <call method="addDriver">
                   <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
                       <argument type="collection">
                         <argument key="/home/dkangme/Documents/GitHub/wwwM2M/www2/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
                       </argument>

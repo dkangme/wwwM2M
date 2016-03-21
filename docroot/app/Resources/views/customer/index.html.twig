@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customer list</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Razonsocial</th>
+                <th>Nombre</th>
+                <th>Direccioncomercial</th>
+                <th>Telefonocontacto</th>
+                <th>Emailcontacto</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td><a href="{{ path('admin_customer_show', { 'id': customer.id }) }}">{{ customer.razonsocial }}</a></td>
+                <td>{{ customer.nombre }}</td>
+                <td>{{ customer.direccioncomercial }}</td>
+                <td>{{ customer.telefonocontacto }}</td>
+                <td>{{ customer.emailcontacto }}</td>
+                <td>{{ customer.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_customer_show', { 'id': customer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_customer_edit', { 'id': customer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_customer_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

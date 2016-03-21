@@ -2,36 +2,67 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Evento
+ *
+ * @ORM\Table(name="Evento", indexes={@ORM\Index(name="fk_Evento_Customer1_idx", columns={"Customer_id"})})
+ * @ORM\Entity
  */
 class Evento
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fechaEvento", type="datetime", nullable=false)
      */
     private $fechaevento;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="nivelEvento", type="integer", nullable=false)
      */
     private $nivelevento = '1';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=256, nullable=false)
      */
     private $descripcion;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idEvento", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idevento;
 
     /**
      * @var \AppBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Customer_id", referencedColumnName="id")
+     * })
      */
     private $customer;
 
+
+
+    /**
+     * Get idevento
+     *
+     * @return integer
+     */
+    public function getIdevento()
+    {
+        return $this->idevento;
+    }
 
     /**
      * Set fechaevento
@@ -106,16 +137,6 @@ class Evento
     }
 
     /**
-     * Get idevento
-     *
-     * @return integer
-     */
-    public function getIdevento()
-    {
-        return $this->idevento;
-    }
-
-    /**
      * Set customer
      *
      * @param \AppBundle\Entity\Customer $customer
@@ -139,4 +160,3 @@ class Evento
         return $this->customer;
     }
 }
-

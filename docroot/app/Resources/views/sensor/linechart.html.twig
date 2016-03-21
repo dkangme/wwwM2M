@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+    </script>
+
+    <!-- Load Google JSAPI -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var jsonData = $.ajax({
+                url: "/admin/sensor/get24/" + {{ sensor.idsensor }},
+                dataType: "json",
+                async: false
+            }).responseText;
+
+            //alert(jsonData);
+
+            var data = new google.visualization.DataTable(jsonData);
+
+            //alert(data);
+
+            var options = {
+                title: '{{sensor.weiwei.description}}::{{sensor.description}}',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                hAxis: {
+                    title: 'TimeStamp'
+                },
+                vAxis: {
+                    title: '{{sensor.sensortypesensortype.measurement}}'
+                },
+                height: 450,
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+    }
+
+    </script>
+
+{% endblock stylesheets %}
+
+{% block breadcumb %}
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/admin/sensor/dashboard">Home</a> 
+    </li>
+</ul>
+
+{% endblock breadcumb %}
+
+{% block body %}
+
+    <h1>{%trans%}Records of the last 24 hours{%endtrans%}</h1><br/>
+
+    <a href="{{ path('admin_sensor_dashboard') }}"><i class="icon-circle-arrow-left"></i> {%trans%}Back to dashboard{%endtrans%}</a>
+
+    <div id="curve_chart" style="width: 900px; height: 300px"></div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('js/sensor.js') }}"></script>
+
+{% endblock %}

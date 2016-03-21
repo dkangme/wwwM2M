@@ -58,9 +58,29 @@ class EventoController extends Controller
         $returnValue = [];
 
         foreach ($eventos as $value) {
+
+            $str_nivelevento = "Normal";
+
+            switch ($value['nivelevento'])
+            {
+                case 0:
+                    $str_nivelevento = "Info";
+                    break;
+                case 1:
+                    $str_nivelevento = "Caution";
+                    break;
+                case 2:
+                    $str_nivelevento = "Warning";
+                    break;
+                case 3:
+                    $str_nivelevento = "Alarm";
+                    break;
+            };
+
+
             $returnValue[] = [
                 'fechaevento' => $value['fechaevento']->format('d-m-Y H:i'),
-                'nivelevento' => $value['nivelevento'],
+                'nivelevento' => $str_nivelevento,
                 'descripcion' => $value['descripcion'],
                 'idevento' => $value['idevento']
             ];

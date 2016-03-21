@@ -1,0 +1,29 @@
+AppBundle\Entity\Location:
+    type: entity
+    table: Location
+    id:
+        idlocation:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idLocation
+            generator:
+                strategy: IDENTITY
+    fields:
+        descrip:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                default: Mobile
+        latlon:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: '-33.437853, -70.650480'
+    lifecycleCallbacks: {  }

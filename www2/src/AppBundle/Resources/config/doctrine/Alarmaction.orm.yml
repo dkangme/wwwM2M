@@ -1,0 +1,42 @@
+AppBundle\Entity\Alarmaction:
+    type: entity
+    table: AlarmAction
+    indexes:
+        fk_AlarmAction_Alarm1_idx:
+            columns:
+                - Alarm_idAlarm
+        fk_AlarmAction_NotificationList1_idx:
+            columns:
+                - NotificationList_idNotificationList
+    id:
+        idalarmaction:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idAlarmAction
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        alarmalarm:
+            targetEntity: Alarm
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Alarm_idAlarm:
+                    referencedColumnName: idAlarm
+            orphanRemoval: false
+        notificationlistnotificationlist:
+            targetEntity: Notificationlist
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NotificationList_idNotificationList:
+                    referencedColumnName: idNotificationList
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

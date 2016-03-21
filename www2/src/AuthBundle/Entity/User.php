@@ -2,23 +2,26 @@
 
 namespace AuthBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Customer;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
+ * User
+ *
+ * @ORM\Table(name="fos_user")
  * @ORM\Entity
- * @ORM\Table(name="auth_user")
  */
-
 class User extends BaseUser
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
+
 
     public function __construct()
     {
@@ -27,38 +30,44 @@ class User extends BaseUser
     }
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
-    * @ORM\JoinColumn(name="idCustomer", referencedColumnName="id")
-    * @var \AuthBundle\Entity\Costumer
-    */
-
-    private $customercustomer;
-
-    /**
-     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
      * @var string
+     *
+     * @ORM\Column(name="nombres", type="string", length=64, precision=0, scale=0, nullable=true, unique=false)
      */
     private $nombres;
 
-    
     /**
-     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
      * @var string
-    */
+     *
+     * @ORM\Column(name="apellido_p", type="string", length=64, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $apellido_p;
 
-    
     /**
-     * @ORM\Column(type="string", length=64, unique=false, nullable=true)
      * @var string
+     *
+     * @ORM\Column(name="apellido_m", type="string", length=64, precision=0, scale=0, nullable=true, unique=false)
      */
     private $apellido_m;
 
     /**
-     * @ORM\Column(type="string", length=16, unique=true, nullable=true)
      * @var string
+     *
+     * @ORM\Column(name="cell_phone", type="string", length=16, precision=0, scale=0, nullable=true, unique=true)
      */
     private $cellPhone;
+
+    /**
+     * @var \AppBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCustomer", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $customercustomer;
+
+
 
     /**
      * Set nombres

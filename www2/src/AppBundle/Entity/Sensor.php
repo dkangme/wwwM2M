@@ -2,65 +2,102 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Sensor
+ *
+ * @ORM\Table(name="Sensor", indexes={@ORM\Index(name="fk_Sensor_WEI1_idx", columns={"WEI_idWEI"}), @ORM\Index(name="fk_Sensor_SensorType1_idx", columns={"SensorType_idSensorType"})})
+ * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\SensorRepository")
  */
 class Sensor
 {
     /**
      * @var float
+     *
+     * @ORM\Column(name="humanValue", type="float", precision=10, scale=0, nullable=false)
      */
     private $humanvalue = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="Value", type="integer", nullable=false)
      */
     private $value = '0';
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="lastReport", type="datetime", nullable=false)
      */
     private $lastreport;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=45, nullable=true)
      */
     private $description;
 
     /**
      * @var integer
-     */
-    private $idsensor;
-
-    /**
-     * @var \AppBundle\Entity\Wei
-     */
-    private $weiwei;
-
-    /**
-     * @var \AppBundle\Entity\Sensortype
-     */
-    private $sensortypesensortype;
-
-    /**
-     * @var integer
+     *
+     * @ORM\Column(name="alarmLevel", type="integer", nullable=false)
      */
     private $alarmlevel = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="formula", type="string", length=45, nullable=false)
      */
-    private $cautionlevelformula = '%s*1';
+    private $formula = '%s*1';
 
     /**
-     * @var string
+     * @var integer
+     *
+     * @ORM\Column(name="channelId", type="integer", nullable=false)
      */
-    private $warninglevelformula = '%s*1';
+    private $channelid = '1';
 
     /**
-     * @var string
+     * @var integer
+     *
+     * @ORM\Column(name="saveHistoryEvery", type="integer", nullable=true)
      */
-    private $alertlevelformula = '%s*1';
+    private $savehistoryevery = '5';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSensor", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsensor;
+
+    /**
+     * @var \AppBundle\Entity\Wei
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Wei")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="WEI_idWEI", referencedColumnName="idWEI")
+     * })
+     */
+    private $weiwei;
+
+    /**
+     * @var \AppBundle\Entity\Sensortype
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sensortype")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="SensorType_idSensorType", referencedColumnName="idSensorType")
+     * })
+     */
+    private $sensortypesensortype;
+
 
 
     /**
@@ -160,6 +197,102 @@ class Sensor
     }
 
     /**
+     * Set alarmlevel
+     *
+     * @param integer $alarmlevel
+     *
+     * @return Sensor
+     */
+    public function setAlarmlevel($alarmlevel)
+    {
+        $this->alarmlevel = $alarmlevel;
+
+        return $this;
+    }
+
+    /**
+     * Get alarmlevel
+     *
+     * @return integer
+     */
+    public function getAlarmlevel()
+    {
+        return $this->alarmlevel;
+    }
+
+    /**
+     * Set formula
+     *
+     * @param string $formula
+     *
+     * @return Sensor
+     */
+    public function setFormula($formula)
+    {
+        $this->formula = $formula;
+
+        return $this;
+    }
+
+    /**
+     * Get formula
+     *
+     * @return string
+     */
+    public function getFormula()
+    {
+        return $this->formula;
+    }
+
+    /**
+     * Set channelid
+     *
+     * @param integer $channelid
+     *
+     * @return Sensor
+     */
+    public function setChannelid($channelid)
+    {
+        $this->channelid = $channelid;
+
+        return $this;
+    }
+
+    /**
+     * Get channelid
+     *
+     * @return integer
+     */
+    public function getChannelid()
+    {
+        return $this->channelid;
+    }
+
+    /**
+     * Set savehistoryevery
+     *
+     * @param integer $savehistoryevery
+     *
+     * @return Sensor
+     */
+    public function setSavehistoryevery($savehistoryevery)
+    {
+        $this->savehistoryevery = $savehistoryevery;
+
+        return $this;
+    }
+
+    /**
+     * Get savehistoryevery
+     *
+     * @return integer
+     */
+    public function getSavehistoryevery()
+    {
+        return $this->savehistoryevery;
+    }
+
+    /**
      * Get idsensor
      *
      * @return integer
@@ -215,101 +348,5 @@ class Sensor
     public function getSensortypesensortype()
     {
         return $this->sensortypesensortype;
-    }
-
-    /**
-     * Set alarmlevel
-     *
-     * @param integer $alarmlevel
-     *
-     * @return Sensor
-     */
-    public function setAlarmlevel($alarmlevel)
-    {
-        $this->alarmlevel = $alarmlevel;
-
-        return $this;
-    }
-
-    /**
-     * Get alarmlevel
-     *
-     * @return integer
-     */
-    public function getAlarmlevel()
-    {
-        return $this->alarmlevel;
-    }
-
-    /**
-     * Set cautionlevelformula
-     *
-     * @param string $cautionlevelformula
-     *
-     * @return Sensor
-     */
-    public function setCautionlevelformula($cautionlevelformula)
-    {
-        $this->cautionlevelformula = $cautionlevelformula;
-
-        return $this;
-    }
-
-    /**
-     * Get cautionlevelformula
-     *
-     * @return string
-     */
-    public function getCautionlevelformula()
-    {
-        return $this->cautionlevelformula;
-    }
-
-    /**
-     * Set warninglevelformula
-     *
-     * @param string $warninglevelformula
-     *
-     * @return Sensor
-     */
-    public function setWarninglevelformula($warninglevelformula)
-    {
-        $this->warninglevelformula = $warninglevelformula;
-
-        return $this;
-    }
-
-    /**
-     * Get warninglevelformula
-     *
-     * @return string
-     */
-    public function getWarninglevelformula()
-    {
-        return $this->warninglevelformula;
-    }
-
-    /**
-     * Set alertlevelformula
-     *
-     * @param string $alertlevelformula
-     *
-     * @return Sensor
-     */
-    public function setAlertlevelformula($alertlevelformula)
-    {
-        $this->alertlevelformula = $alertlevelformula;
-
-        return $this;
-    }
-
-    /**
-     * Get alertlevelformula
-     *
-     * @return string
-     */
-    public function getAlertlevelformula()
-    {
-        return $this->alertlevelformula;
     }
 }

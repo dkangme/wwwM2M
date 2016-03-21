@@ -1,60 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Wei</h1>
+    <h1>{%trans%}MODWEI Information{%endtrans%}</h1><br/>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Nickname</th>
-                <td>{{ wei.nickname }}</td>
-            </tr>
-            <tr>
-                <th>Lastreport</th>
-                <td>{% if wei.lastreport %}{{ wei.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Imei</th>
-                <td>{{ wei.imei }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ wei.description }}</td>
-            </tr>
-            <tr>
-                <th>Operator</th>
-                <td>{{ wei.operator }}</td>
-            </tr>
-            <tr>
-                <th>Activationdate</th>
-                <td>{% if wei.activationdate %}{{ wei.activationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modificationdate</th>
-                <td>{% if wei.modificationdate %}{{ wei.modificationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Chipnumber</th>
-                <td>{{ wei.chipnumber }}</td>
-            </tr>
-            <tr>
-                <th>Idwei</th>
-                <td>{{ wei.idwei }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row">
+            
+            <div class="col-sm-4 col-md-4 col-lg-4">
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_wei_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <table class="table table-sm table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ wei.idwei }}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Nickname{%endtrans%}</th>
+                            <td>{{ wei.nickname }}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Last report{%endtrans%}</th>
+                            <td>{% if wei.lastreport %}{{ wei.lastreport|date('d-m-Y H:i') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}IMEI{%endtrans%}</th>
+                            <td>{{ wei.imei }}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Description{%endtrans%}</th>
+                            <td>{{ wei.description }}</td>
+                       </tr>
+                        <tr>
+                            <th>{%trans%}Telephone operator{%endtrans%}</th>
+                            <td>{{ wei.operator }}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Activation date{%endtrans%}</th>
+                            <td>{% if wei.activationdate %}{{ wei.activationdate|date('d-m-Y H:i') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Modification date{%endtrans%}</th>
+                            <td>{% if wei.modificationdate %}{{ wei.modificationdate|date('d-m-Y H:i') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>{%trans%}Chip number{%endtrans%}</th>
+                            <td>{{ wei.chipnumber }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+
+    <a href="{{ path('admin_wei_index') }}"><i class="icon-circle-arrow-left"></i> {%trans%}Back to the list{%endtrans%}</a>
+    <a href="{{ path('admin_wei_edit', { 'id': wei.idwei }) }}"><i class="icon-pencil"></i>{%trans%}Edit{%endtrans%}</a>
 {% endblock %}

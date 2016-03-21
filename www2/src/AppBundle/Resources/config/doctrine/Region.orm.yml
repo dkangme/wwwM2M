@@ -1,0 +1,44 @@
+AppBundle\Entity\Region:
+    type: entity
+    table: Region
+    indexes:
+        fk_Region_Pais1_idx:
+            columns:
+                - Pais_idPais
+    id:
+        idregion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idRegion
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombreregion:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+            column: nombreRegion
+        abreviaturaregion:
+            type: string
+            nullable: true
+            length: 24
+            options:
+                fixed: false
+            column: abreviaturaRegion
+    manyToOne:
+        paispais:
+            targetEntity: Pais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Pais_idPais:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

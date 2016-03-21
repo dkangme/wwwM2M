@@ -176,6 +176,21 @@ class ModweiStatus extends \AppBundle\Entity\ModweiStatus implements \Doctrine\O
     /**
      * {@inheritDoc}
      */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setDescription($description)
     {
 
@@ -193,21 +208,6 @@ class ModweiStatus extends \AppBundle\Entity\ModweiStatus implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getId()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
-
-        return parent::getId();
     }
 
 }

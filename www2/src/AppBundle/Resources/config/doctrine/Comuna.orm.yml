@@ -1,0 +1,37 @@
+AppBundle\Entity\Comuna:
+    type: entity
+    table: Comuna
+    indexes:
+        fk_Comuna_Provincia1_idx:
+            columns:
+                - Provincia_idProvincia
+    id:
+        idcomuna:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idComuna
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombrecomuna:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+            column: nombreComuna
+    manyToOne:
+        provinciaprovincia:
+            targetEntity: Provincia
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Provincia_idProvincia:
+                    referencedColumnName: idProvincia
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

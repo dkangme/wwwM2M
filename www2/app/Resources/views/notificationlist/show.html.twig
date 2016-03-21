@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Notificationlist</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ notificationlist.name }}</td>
+            </tr>
+            <tr>
+                <th>List</th>
+                <td>{{ notificationlist.list }}</td>
+            </tr>
+            <tr>
+                <th>Idnotificationlist</th>
+                <td>{{ notificationlist.idnotificationlist }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_notificationlist_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_notificationlist_edit', { 'id': notificationlist.idnotificationlist }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

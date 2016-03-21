@@ -295,65 +295,130 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AuthBundle\\Controller\\DefaultController::indexAction',  '_route' => 'auth_default_index',);
         }
 
-        if (0 === strpos($pathinfo, '/admin/customer')) {
-            // admin_customer_index
-            if (rtrim($pathinfo, '/') === '/admin/customer') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_admin_customer_index;
-                }
+        if (0 === strpos($pathinfo, '/admin')) {
+            if (0 === strpos($pathinfo, '/admin/alarm')) {
+                // admin_alarm_index
+                if (rtrim($pathinfo, '/') === '/admin/alarm') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_alarm_index;
+                    }
 
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'admin_customer_index');
-                }
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_alarm_index');
+                    }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\CustomerController::indexAction',  '_route' => 'admin_customer_index',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\AlarmController::indexAction',  '_route' => 'admin_alarm_index',);
+                }
+                not_admin_alarm_index:
+
+                // admin_alarm_new
+                if ($pathinfo === '/admin/alarm/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_alarm_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\AlarmController::newAction',  '_route' => 'admin_alarm_new',);
+                }
+                not_admin_alarm_new:
+
+                // admin_alarm_show
+                if (preg_match('#^/admin/alarm/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_alarm_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_alarm_show')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::showAction',));
+                }
+                not_admin_alarm_show:
+
+                // admin_alarm_edit
+                if (preg_match('#^/admin/alarm/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_alarm_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_alarm_edit')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::editAction',));
+                }
+                not_admin_alarm_edit:
+
+                // admin_alarm_delete
+                if (preg_match('#^/admin/alarm/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_admin_alarm_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_alarm_delete')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::deleteAction',));
+                }
+                not_admin_alarm_delete:
+
             }
-            not_admin_customer_index:
 
-            // admin_customer_new
-            if ($pathinfo === '/admin/customer/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_admin_customer_new;
+            if (0 === strpos($pathinfo, '/admin/customer')) {
+                // admin_customer_index
+                if (rtrim($pathinfo, '/') === '/admin/customer') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_customer_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_customer_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\CustomerController::indexAction',  '_route' => 'admin_customer_index',);
                 }
+                not_admin_customer_index:
 
-                return array (  '_controller' => 'AppBundle\\Controller\\CustomerController::newAction',  '_route' => 'admin_customer_new',);
-            }
-            not_admin_customer_new:
+                // admin_customer_new
+                if ($pathinfo === '/admin/customer/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_customer_new;
+                    }
 
-            // admin_customer_show
-            if (preg_match('#^/admin/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_admin_customer_show;
+                    return array (  '_controller' => 'AppBundle\\Controller\\CustomerController::newAction',  '_route' => 'admin_customer_new',);
                 }
+                not_admin_customer_new:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_show')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::showAction',));
-            }
-            not_admin_customer_show:
+                // admin_customer_show
+                if (preg_match('#^/admin/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_customer_show;
+                    }
 
-            // admin_customer_edit
-            if (preg_match('#^/admin/customer/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_admin_customer_edit;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_show')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::showAction',));
                 }
+                not_admin_customer_show:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_edit')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::editAction',));
-            }
-            not_admin_customer_edit:
+                // admin_customer_edit
+                if (preg_match('#^/admin/customer/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_customer_edit;
+                    }
 
-            // admin_customer_delete
-            if (preg_match('#^/admin/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_admin_customer_delete;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_edit')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::editAction',));
                 }
+                not_admin_customer_edit:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_delete')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::deleteAction',));
+                // admin_customer_delete
+                if (preg_match('#^/admin/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_admin_customer_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_customer_delete')), array (  '_controller' => 'AppBundle\\Controller\\CustomerController::deleteAction',));
+                }
+                not_admin_customer_delete:
+
             }
-            not_admin_customer_delete:
 
         }
 
@@ -365,6 +430,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
+
+        // caicai_report
+        if (0 === strpos($pathinfo, '/caicai') && preg_match('#^/caicai/(?P<imei>[^/]++)/(?P<ch1>[^/]++)/(?P<ch2>[^/]++)/(?P<ch3>[^/]++)/(?P<ch4>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_caicai_report;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'caicai_report')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::caicaiAction',));
+        }
+        not_caicai_report:
 
         if (0 === strpos($pathinfo, '/admin')) {
             if (0 === strpos($pathinfo, '/admin/evento')) {
@@ -407,6 +483,68 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            if (0 === strpos($pathinfo, '/admin/notificationlist')) {
+                // admin_notificationlist_index
+                if (rtrim($pathinfo, '/') === '/admin/notificationlist') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_notificationlist_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_notificationlist_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::indexAction',  '_route' => 'admin_notificationlist_index',);
+                }
+                not_admin_notificationlist_index:
+
+                // admin_notificationlist_new
+                if ($pathinfo === '/admin/notificationlist/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_notificationlist_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::newAction',  '_route' => 'admin_notificationlist_new',);
+                }
+                not_admin_notificationlist_new:
+
+                // admin_notificationlist_show
+                if (preg_match('#^/admin/notificationlist/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_notificationlist_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_notificationlist_show')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::showAction',));
+                }
+                not_admin_notificationlist_show:
+
+                // admin_notificationlist_edit
+                if (preg_match('#^/admin/notificationlist/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_admin_notificationlist_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_notificationlist_edit')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::editAction',));
+                }
+                not_admin_notificationlist_edit:
+
+                // admin_notificationlist_delete
+                if (preg_match('#^/admin/notificationlist/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_admin_notificationlist_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_notificationlist_delete')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::deleteAction',));
+                }
+                not_admin_notificationlist_delete:
+
+            }
+
             if (0 === strpos($pathinfo, '/admin/sensor')) {
                 // admin_sensor_index
                 if (rtrim($pathinfo, '/') === '/admin/sensor') {
@@ -444,6 +582,28 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'AppBundle\\Controller\\SensorController::jsonSensorAction',  '_route' => 'admin_sensor_json_index',);
                 }
                 not_admin_sensor_json_index:
+
+                // admin_sensor_linechart
+                if (0 === strpos($pathinfo, '/admin/sensor/chart') && preg_match('#^/admin/sensor/chart/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_sensor_linechart;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_sensor_linechart')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::viewChartAction',));
+                }
+                not_admin_sensor_linechart:
+
+                // admin_last24h_sensor
+                if (0 === strpos($pathinfo, '/admin/sensor/get24') && preg_match('#^/admin/sensor/get24/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_admin_last24h_sensor;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_last24h_sensor')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::last24hAction',));
+                }
+                not_admin_last24h_sensor:
 
                 // admin_sensor_new
                 if ($pathinfo === '/admin/sensor/new') {

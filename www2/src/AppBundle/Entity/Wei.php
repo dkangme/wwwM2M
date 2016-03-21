@@ -2,71 +2,122 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Wei
+ *
+ * @ORM\Table(name="WEI", uniqueConstraints={@ORM\UniqueConstraint(name="nickName_UNIQUE", columns={"nickName"})}, indexes={@ORM\Index(name="fk_WEI_Location_idx", columns={"Location_idLocation"}), @ORM\Index(name="fk_WEI_ModWei_Status1_idx", columns={"ModWei_Status_id"}), @ORM\Index(name="fk_WEI_Customer1_idx", columns={"Customer_id"})})
+ * @ORM\Entity
  */
 class Wei
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nickName", type="string", length=24, nullable=false)
      */
     private $nickname;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="lastReport", type="datetime", nullable=true)
      */
     private $lastreport;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="IMEI", type="string", length=15, nullable=false)
      */
     private $imei;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=128, nullable=true)
      */
     private $description;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Operator", type="string", length=45, nullable=true)
      */
     private $operator;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="activationDate", type="datetime", nullable=true)
      */
     private $activationdate;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="modificationDate", type="datetime", nullable=true)
      */
     private $modificationdate;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="chipNumber", type="string", length=45, nullable=true)
      */
     private $chipnumber;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="idWEI", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idwei;
 
     /**
      * @var \AppBundle\Entity\ModweiStatus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ModweiStatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ModWei_Status_id", referencedColumnName="id")
+     * })
      */
     private $modweiStatus;
 
     /**
      * @var \AppBundle\Entity\Location
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Location")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Location_idLocation", referencedColumnName="idLocation")
+     * })
      */
     private $locationlocation;
 
     /**
      * @var \AppBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Customer_id", referencedColumnName="id")
+     * })
      */
     private $customer;
 
+
+
+    /**
+     * Get idwei
+     *
+     * @return integer
+     */
+    public function getIdwei()
+    {
+        return $this->idwei;
+    }
 
     /**
      * Set nickname
@@ -261,37 +312,27 @@ class Wei
     }
 
     /**
-     * Get idwei
+     * Set customer
      *
-     * @return integer
-     */
-    public function getIdwei()
-    {
-        return $this->idwei;
-    }
-
-    /**
-     * Set modweiStatus
-     *
-     * @param \AppBundle\Entity\ModweiStatus $modweiStatus
+     * @param \AppBundle\Entity\Customer $customer
      *
      * @return Wei
      */
-    public function setModweiStatus(\AppBundle\Entity\ModweiStatus $modweiStatus = null)
+    public function setCustomer(\AppBundle\Entity\Customer $customer = null)
     {
-        $this->modweiStatus = $modweiStatus;
+        $this->customer = $customer;
 
         return $this;
     }
 
     /**
-     * Get modweiStatus
+     * Get customer
      *
-     * @return \AppBundle\Entity\ModweiStatus
+     * @return \AppBundle\Entity\Customer
      */
-    public function getModweiStatus()
+    public function getCustomer()
     {
-        return $this->modweiStatus;
+        return $this->customer;
     }
 
     /**
@@ -319,27 +360,26 @@ class Wei
     }
 
     /**
-     * Set customer
+     * Set modweiStatus
      *
-     * @param \AppBundle\Entity\Customer $customer
+     * @param \AppBundle\Entity\ModweiStatus $modweiStatus
      *
      * @return Wei
      */
-    public function setCustomer(\AppBundle\Entity\Customer $customer = null)
+    public function setModweiStatus(\AppBundle\Entity\ModweiStatus $modweiStatus = null)
     {
-        $this->customer = $customer;
+        $this->modweiStatus = $modweiStatus;
 
         return $this;
     }
 
     /**
-     * Get customer
+     * Get modweiStatus
      *
-     * @return \AppBundle\Entity\Customer
+     * @return \AppBundle\Entity\ModweiStatus
      */
-    public function getCustomer()
+    public function getModweiStatus()
     {
-        return $this->customer;
+        return $this->modweiStatus;
     }
 }
-

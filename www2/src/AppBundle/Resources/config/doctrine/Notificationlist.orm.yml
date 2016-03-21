@@ -1,0 +1,46 @@
+AppBundle\Entity\Notificationlist:
+    type: entity
+    table: NotificationList
+    indexes:
+        fk_NotificationList_notificationType1_idx:
+            columns:
+                - notificationType_idnotificationType
+    uniqueConstraints:
+        name_UNIQUE:
+            columns:
+                - name
+    id:
+        idnotificationlist:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idNotificationList
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        list:
+            type: string
+            nullable: true
+            length: 512
+            options:
+                fixed: false
+    manyToOne:
+        notificationtypenotificationtype:
+            targetEntity: Notificationtype
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                notificationType_idnotificationType:
+                    referencedColumnName: idnotificationType
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
