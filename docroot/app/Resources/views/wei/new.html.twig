@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            <h1>{%trans%}MODWEI creation{%endtrans%}</h1><br/>
+
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="{%trans%}Create{%endtrans%}" />
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <br/>
+    <a href="{{ path('data_modwei_index') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to the list{%endtrans%}</a>
+    
+</div>
+{% endblock %}

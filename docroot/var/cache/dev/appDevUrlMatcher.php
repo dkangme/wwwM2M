@@ -109,6 +109,68 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AuthBundle\\Controller\\DefaultController::indexAction',  '_route' => 'auth_default_index',);
         }
 
+        if (0 === strpos($pathinfo, '/data/alarm')) {
+            // data_alarm_index
+            if (rtrim($pathinfo, '/') === '/data/alarm') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_data_alarm_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'data_alarm_index');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\AlarmController::indexAction',  '_route' => 'data_alarm_index',);
+            }
+            not_data_alarm_index:
+
+            // data_alarm_new
+            if ($pathinfo === '/data/alarm/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_data_alarm_new;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\AlarmController::newAction',  '_route' => 'data_alarm_new',);
+            }
+            not_data_alarm_new:
+
+            // data_alarm_show
+            if (preg_match('#^/data/alarm/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_data_alarm_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_alarm_show')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::showAction',));
+            }
+            not_data_alarm_show:
+
+            // data_alarm_edit
+            if (preg_match('#^/data/alarm/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_data_alarm_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_alarm_edit')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::editAction',));
+            }
+            not_data_alarm_edit:
+
+            // data_alarm_delete
+            if (preg_match('#^/data/alarm/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_data_alarm_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_alarm_delete')), array (  '_controller' => 'AppBundle\\Controller\\AlarmController::deleteAction',));
+            }
+            not_data_alarm_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/admin/customer')) {
             // admin_customer_index
             if (rtrim($pathinfo, '/') === '/admin/customer') {
@@ -180,65 +242,261 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/data/sensor')) {
-            // data_sensor_index
-            if (rtrim($pathinfo, '/') === '/data/sensor') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_data_sensor_index;
-                }
-
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'data_sensor_index');
-                }
-
-                return array (  '_controller' => 'AppBundle\\Controller\\SensorController::indexAction',  '_route' => 'data_sensor_index',);
+        // caicai_report
+        if (0 === strpos($pathinfo, '/caicai') && preg_match('#^/caicai/(?P<imei>[^/]++)/(?P<ch1>[^/]++)/(?P<ch2>[^/]++)/(?P<ch3>[^/]++)/(?P<ch4>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_caicai_report;
             }
-            not_data_sensor_index:
 
-            // data_sensor_new
-            if ($pathinfo === '/data/sensor/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_data_sensor_new;
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'caicai_report')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::caicaiAction',));
+        }
+        not_caicai_report:
+
+        if (0 === strpos($pathinfo, '/data')) {
+            if (0 === strpos($pathinfo, '/data/notificationlist')) {
+                // data_notificationlist_index
+                if (rtrim($pathinfo, '/') === '/data/notificationlist') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_notificationlist_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'data_notificationlist_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::indexAction',  '_route' => 'data_notificationlist_index',);
+                }
+                not_data_notificationlist_index:
+
+                // data_notificationlist_new
+                if ($pathinfo === '/data/notificationlist/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_notificationlist_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::newAction',  '_route' => 'data_notificationlist_new',);
+                }
+                not_data_notificationlist_new:
+
+                // data_notificationlist_show
+                if (preg_match('#^/data/notificationlist/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_notificationlist_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_notificationlist_show')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::showAction',));
+                }
+                not_data_notificationlist_show:
+
+                // data_notificationlist_edit
+                if (preg_match('#^/data/notificationlist/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_notificationlist_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_notificationlist_edit')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::editAction',));
+                }
+                not_data_notificationlist_edit:
+
+                // data_notificationlist_delete
+                if (preg_match('#^/data/notificationlist/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_data_notificationlist_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_notificationlist_delete')), array (  '_controller' => 'AppBundle\\Controller\\NotificationlistController::deleteAction',));
+                }
+                not_data_notificationlist_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/data/sensor')) {
+                // data_sensor_index
+                if (rtrim($pathinfo, '/') === '/data/sensor') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'data_sensor_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::indexAction',  '_route' => 'data_sensor_index',);
+                }
+                not_data_sensor_index:
+
+                // data_sensor_dashboard
+                if ($pathinfo === '/data/sensor/dashboard') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_dashboard;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::dashboardAction',  '_route' => 'data_sensor_dashboard',);
+                }
+                not_data_sensor_dashboard:
+
+                // data_sensor_json_index
+                if ($pathinfo === '/data/sensor/json') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_json_index;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::jsonSensorAction',  '_route' => 'data_sensor_json_index',);
+                }
+                not_data_sensor_json_index:
+
+                // data_sensor_linechart
+                if (0 === strpos($pathinfo, '/data/sensor/chart') && preg_match('#^/data/sensor/chart/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_linechart;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_linechart')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::viewChartAction',));
+                }
+                not_data_sensor_linechart:
+
+                if (0 === strpos($pathinfo, '/data/sensor/get24')) {
+                    // data_last24h_sensor
+                    if (preg_match('#^/data/sensor/get24/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_data_last24h_sensor;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_last24h_sensor')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::last24hAction',));
+                    }
+                    not_data_last24h_sensor:
+
+                    // data_last24csv_sensor
+                    if (0 === strpos($pathinfo, '/data/sensor/get24csv') && preg_match('#^/data/sensor/get24csv/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_data_last24csv_sensor;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_last24csv_sensor')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::last24csvAction',));
+                    }
+                    not_data_last24csv_sensor:
+
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\SensorController::newAction',  '_route' => 'data_sensor_new',);
-            }
-            not_data_sensor_new:
+                // data_sensor_new
+                if ($pathinfo === '/data/sensor/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_sensor_new;
+                    }
 
-            // data_sensor_show
-            if (preg_match('#^/data/sensor/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_data_sensor_show;
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::newAction',  '_route' => 'data_sensor_new',);
                 }
+                not_data_sensor_new:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_show')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::showAction',));
-            }
-            not_data_sensor_show:
+                // data_sensor_show
+                if (preg_match('#^/data/sensor/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_show;
+                    }
 
-            // data_sensor_edit
-            if (preg_match('#^/data/sensor/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_data_sensor_edit;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_show')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::showAction',));
                 }
+                not_data_sensor_show:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_edit')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::editAction',));
-            }
-            not_data_sensor_edit:
+                // data_sensor_edit
+                if (preg_match('#^/data/sensor/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_sensor_edit;
+                    }
 
-            // data_sensor_delete
-            if (preg_match('#^/data/sensor/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_data_sensor_delete;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_edit')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::editAction',));
                 }
+                not_data_sensor_edit:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_delete')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::deleteAction',));
+                // data_sensor_delete
+                if (preg_match('#^/data/sensor/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_data_sensor_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_sensor_delete')), array (  '_controller' => 'AppBundle\\Controller\\SensorController::deleteAction',));
+                }
+                not_data_sensor_delete:
+
             }
-            not_data_sensor_delete:
+
+            if (0 === strpos($pathinfo, '/data/modwei')) {
+                // data_modwei_index
+                if (rtrim($pathinfo, '/') === '/data/modwei') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_modwei_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'data_modwei_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\WeiController::indexAction',  '_route' => 'data_modwei_index',);
+                }
+                not_data_modwei_index:
+
+                // data_modwei_new
+                if ($pathinfo === '/data/modwei/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_modwei_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\WeiController::newAction',  '_route' => 'data_modwei_new',);
+                }
+                not_data_modwei_new:
+
+                // data_modwei_show
+                if (preg_match('#^/data/modwei/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_modwei_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_modwei_show')), array (  '_controller' => 'AppBundle\\Controller\\WeiController::showAction',));
+                }
+                not_data_modwei_show:
+
+                // data_modwei_edit
+                if (preg_match('#^/data/modwei/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_data_modwei_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_modwei_edit')), array (  '_controller' => 'AppBundle\\Controller\\WeiController::editAction',));
+                }
+                not_data_modwei_edit:
+
+                // data_modwei_delete
+                if (preg_match('#^/data/modwei/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_data_modwei_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_modwei_delete')), array (  '_controller' => 'AppBundle\\Controller\\WeiController::deleteAction',));
+                }
+                not_data_modwei_delete:
+
+            }
 
         }
 

@@ -128,4 +128,33 @@ class Notificationlist
     {
         return $this->notificationtypenotificationtype;
     }
+    /**
+     * @var \AppBundle\Entity\Customer
+     */
+    private $customer;
+
+
+    /**
+     * Set customer
+     *
+     * @param \AppBundle\Entity\Customer $customer
+     *
+     * @return Notificationlist
+     */
+    public function setCustomer(\AppBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \AppBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }

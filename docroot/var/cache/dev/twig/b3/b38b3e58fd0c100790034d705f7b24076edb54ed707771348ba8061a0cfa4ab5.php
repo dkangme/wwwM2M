@@ -10,14 +10,16 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
         $this->parent = false;
 
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2484b06913ea6962f4160d75ea3cceccc294ce99b0d514e79930f02856d01b73 = $this->env->getExtension("native_profiler");
-        $__internal_2484b06913ea6962f4160d75ea3cceccc294ce99b0d514e79930f02856d01b73->enter($__internal_2484b06913ea6962f4160d75ea3cceccc294ce99b0d514e79930f02856d01b73_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
+        $__internal_5c13118d6fcd99691a6bd22bb54811ea8be201ecb803c608f11370c24562f15e = $this->env->getExtension("native_profiler");
+        $__internal_5c13118d6fcd99691a6bd22bb54811ea8be201ecb803c608f11370c24562f15e->enter($__internal_5c13118d6fcd99691a6bd22bb54811ea8be201ecb803c608f11370c24562f15e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -85,6 +87,12 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
   <script src=\"https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js\"></script>
   <script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>
   <![endif]-->
+
+  ";
+        // line 40
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 41
+        echo "  
 </head>
 <body class=\"hold-transition skin-black sidebar-mini\">
 <div class=\"wrapper\">
@@ -107,14 +115,14 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
       <div class=\"navbar-custom-menu\">
         <ul class=\"nav navbar-nav\">
         \t<li><img src=\"";
-        // line 60
+        // line 63
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/logo.jpg"), "html", null, true);
         echo "\"/></li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class=\"dropdown user user-menu\">
             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
               <img src=\"";
-        // line 64
+        // line 67
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/user2-160x160.jpg"), "html", null, true);
         echo "\" class=\"user-image\" alt=\"User Image\">
               <span class=\"hidden-xs\">Alexander Pierce</span>
@@ -123,7 +131,7 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
               <!-- User image -->
               <li class=\"user-header\">
                 <img src=\"";
-        // line 70
+        // line 73
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("img/user2-160x160.jpg"), "html", null, true);
         echo "\" class=\"img-circle\" alt=\"User Image\">
                 <p>
@@ -173,12 +181,12 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
       <ul class=\"sidebar-menu\">
         <li class=\"header\">MAIN MENU</li>
         <li>
-          <a href=\"/alumno\">
+          <a href=\"/data/sensor/dashboard\">
             <i class=\"fa fa-tachometer\"></i> <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href=\"/programa\">
+          <a href=\"/data/event\">
             <i class=\"fa fa-info-circle\"></i> <span>Events</span>
           </a>
         </li>
@@ -188,10 +196,10 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
           </a>
 \t\t\t<ul class=\"treeview-menu\">
 \t\t\t\t<li><a href=\"/admin/customer\"><i class=\"fa fa-users\t\"></i> Customers</a></li>
-\t\t\t\t<li><a href=\"/admin/modwei\"><i class=\"fa fa-rss\"></i> MODWEI</a></li>
+\t\t\t\t<li><a href=\"/data/modwei\"><i class=\"fa fa-rss\"></i> MODWEI</a></li>
 \t\t\t\t<li><a href=\"/data/sensor\"><i class=\"fa fa-stethoscope\"></i> Sensor</a></li>
-\t\t\t\t<li><a href=\"/admin/alarm\"><i class=\"fa fa-bullhorn\"></i> Alarms</a></li>
-\t\t\t\t<li><a href=\"/admin/notificationlist\"><i class=\"fa fa-envelope-o\"></i> Notification Lists</a></li>
+\t\t\t\t<li><a href=\"/data/alarm\"><i class=\"fa fa-bullhorn\"></i> Alarms</a></li>
+\t\t\t\t<li><a href=\"/data/notificationlist\"><i class=\"fa fa-envelope-o\"></i> Notification Lists</a></li>
 \t\t\t</ul>
         </li>
         <li>
@@ -209,9 +217,9 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
   <div class=\"content-wrapper\">
     
     ";
-        // line 153
-        $this->displayBlock('body', $context, $blocks);
         // line 156
+        $this->displayBlock('body', $context, $blocks);
+        // line 159
         echo "
   </div>
   <!-- /.content-wrapper -->
@@ -419,107 +427,138 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.0 -->
-<script src=\"";
-        // line 364
+    <!-- jQuery 2.2.0 -->
+    <script src=\"";
+        // line 367
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/jQuery/jQuery-2.2.0.min.js"), "html", null, true);
         echo "\"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src=\"https://code.jquery.com/ui/1.11.4/jquery-ui.min.js\"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  \$.widget.bridge('uibutton', \$.ui.button);
-</script>
-<!-- Bootstrap 3.3.5 -->
-<script src=\"";
-        // line 372
+    <!-- jQuery UI 1.11.4 -->
+    <script src=\"https://code.jquery.com/ui/1.11.4/jquery-ui.min.js\"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      \$.widget.bridge('uibutton', \$.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src=\"";
+        // line 375
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
-<!-- Morris.js charts -->
-<script src=\"https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js\"></script>
-<script src=\"";
-        // line 375
+    <!-- Morris.js charts -->
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js\"></script>
+    <script src=\"";
+        // line 378
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/morris/morris.min.js"), "html", null, true);
         echo "\"></script>
-<!-- Sparkline -->
-<script src=\"";
-        // line 377
+    <!-- Sparkline -->
+    <script src=\"";
+        // line 380
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/sparkline/jquery.sparkline.min.js"), "html", null, true);
         echo "\"></script>
-<!-- jvectormap -->
-<script src=\"";
-        // line 379
+    <!-- jvectormap -->
+    <script src=\"";
+        // line 382
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 380
+    <script src=\"";
+        // line 383
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/jvectormap/jquery-jvectormap-world-mill-en.js"), "html", null, true);
         echo "\"></script>
-<!-- jQuery Knob Chart -->
-<script src=\"";
-        // line 382
+    <!-- jQuery Knob Chart -->
+    <script src=\"";
+        // line 385
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/knob/jquery.knob.js"), "html", null, true);
         echo "\"></script>
-<!-- daterangepicker -->
-<script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js\"></script>
-<script src=\"";
-        // line 385
+    <!-- daterangepicker -->
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js\"></script>
+    <script src=\"";
+        // line 388
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/daterangepicker/daterangepicker.js"), "html", null, true);
         echo "\"></script>
-<!-- datepicker -->
-<script src=\"";
-        // line 387
+    <!-- datepicker -->
+    <script src=\"";
+        // line 390
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/datepicker/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src=\"";
-        // line 389
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src=\"";
+        // line 392
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"), "html", null, true);
         echo "\"></script>
-<!-- Slimscroll -->
-<script src=\"";
-        // line 391
+    <!-- Slimscroll -->
+    <script src=\"";
+        // line 394
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/slimScroll/jquery.slimscroll.min.js"), "html", null, true);
         echo "\"></script>
-<!-- FastClick -->
-<script src=\"";
-        // line 393
+    <!-- FastClick -->
+    <script src=\"";
+        // line 396
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("plugins/fastclick/fastclick.js"), "html", null, true);
         echo "\"></script>
-<!-- AdminLTE App -->
-<script src=\"";
-        // line 395
+    <!-- AdminLTE App -->
+    <script src=\"";
+        // line 398
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/app.min.js"), "html", null, true);
         echo "\"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src=\"";
-        // line 397
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src=\"";
+        // line 400
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/pages/dashboard.js"), "html", null, true);
         echo "\"></script>
-<!-- AdminLTE for demo purposes -->
-<script src=\"";
-        // line 399
+    <!-- AdminLTE for demo purposes -->
+    <script src=\"";
+        // line 402
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/demo.js"), "html", null, true);
         echo "\"></script>
-</body>
+
+
+    <!-- end: JavaScript-->
+
+    ";
+        // line 407
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 408
+        echo "
+  </body>
 </html>
 ";
         
-        $__internal_2484b06913ea6962f4160d75ea3cceccc294ce99b0d514e79930f02856d01b73->leave($__internal_2484b06913ea6962f4160d75ea3cceccc294ce99b0d514e79930f02856d01b73_prof);
+        $__internal_5c13118d6fcd99691a6bd22bb54811ea8be201ecb803c608f11370c24562f15e->leave($__internal_5c13118d6fcd99691a6bd22bb54811ea8be201ecb803c608f11370c24562f15e_prof);
 
     }
 
-    // line 153
+    // line 40
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_3adee6040d6412ff8fa0b0e4a537b3a34e865f47af1266bba36ab924e74dc540 = $this->env->getExtension("native_profiler");
+        $__internal_3adee6040d6412ff8fa0b0e4a537b3a34e865f47af1266bba36ab924e74dc540->enter($__internal_3adee6040d6412ff8fa0b0e4a537b3a34e865f47af1266bba36ab924e74dc540_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        
+        $__internal_3adee6040d6412ff8fa0b0e4a537b3a34e865f47af1266bba36ab924e74dc540->leave($__internal_3adee6040d6412ff8fa0b0e4a537b3a34e865f47af1266bba36ab924e74dc540_prof);
+
+    }
+
+    // line 156
     public function block_body($context, array $blocks = array())
     {
-        $__internal_53492c9638c2edcad60c2aa7c7bc3fde2dce8b603c1922e3fd3f4a8e0f07b146 = $this->env->getExtension("native_profiler");
-        $__internal_53492c9638c2edcad60c2aa7c7bc3fde2dce8b603c1922e3fd3f4a8e0f07b146->enter($__internal_53492c9638c2edcad60c2aa7c7bc3fde2dce8b603c1922e3fd3f4a8e0f07b146_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_08ea1239fc21583c8da19dc1a25382ecc7d0593f04ee1c4988dc6f1b7c565169 = $this->env->getExtension("native_profiler");
+        $__internal_08ea1239fc21583c8da19dc1a25382ecc7d0593f04ee1c4988dc6f1b7c565169->enter($__internal_08ea1239fc21583c8da19dc1a25382ecc7d0593f04ee1c4988dc6f1b7c565169_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 154
+        // line 157
         echo "
     ";
         
-        $__internal_53492c9638c2edcad60c2aa7c7bc3fde2dce8b603c1922e3fd3f4a8e0f07b146->leave($__internal_53492c9638c2edcad60c2aa7c7bc3fde2dce8b603c1922e3fd3f4a8e0f07b146_prof);
+        $__internal_08ea1239fc21583c8da19dc1a25382ecc7d0593f04ee1c4988dc6f1b7c565169->leave($__internal_08ea1239fc21583c8da19dc1a25382ecc7d0593f04ee1c4988dc6f1b7c565169_prof);
+
+    }
+
+    // line 407
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_1207f2fa1191256d3daf456182a4a2b6ae0ed9db01c286a63e1444aa849f35bb = $this->env->getExtension("native_profiler");
+        $__internal_1207f2fa1191256d3daf456182a4a2b6ae0ed9db01c286a63e1444aa849f35bb->enter($__internal_1207f2fa1191256d3daf456182a4a2b6ae0ed9db01c286a63e1444aa849f35bb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        
+        $__internal_1207f2fa1191256d3daf456182a4a2b6ae0ed9db01c286a63e1444aa849f35bb->leave($__internal_1207f2fa1191256d3daf456182a4a2b6ae0ed9db01c286a63e1444aa849f35bb_prof);
 
     }
 
@@ -535,7 +574,7 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 
     public function getDebugInfo()
     {
-        return array (  519 => 154,  513 => 153,  502 => 399,  497 => 397,  492 => 395,  487 => 393,  482 => 391,  477 => 389,  472 => 387,  467 => 385,  461 => 382,  456 => 380,  452 => 379,  447 => 377,  442 => 375,  436 => 372,  425 => 364,  215 => 156,  213 => 153,  127 => 70,  118 => 64,  111 => 60,  79 => 31,  74 => 29,  69 => 27,  64 => 25,  59 => 23,  54 => 21,  49 => 19,  43 => 16,  34 => 10,  23 => 1,);
+        return array (  555 => 407,  547 => 157,  541 => 156,  530 => 40,  520 => 408,  518 => 407,  510 => 402,  505 => 400,  500 => 398,  495 => 396,  490 => 394,  485 => 392,  480 => 390,  475 => 388,  469 => 385,  464 => 383,  460 => 382,  455 => 380,  450 => 378,  444 => 375,  433 => 367,  223 => 159,  221 => 156,  135 => 73,  126 => 67,  119 => 63,  95 => 41,  93 => 40,  81 => 31,  76 => 29,  71 => 27,  66 => 25,  61 => 23,  56 => 21,  51 => 19,  45 => 16,  36 => 10,  25 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -576,6 +615,9 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 /*   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>*/
 /*   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>*/
 /*   <![endif]-->*/
+/* */
+/*   {% block stylesheets %}{% endblock %}*/
+/*   */
 /* </head>*/
 /* <body class="hold-transition skin-black sidebar-mini">*/
 /* <div class="wrapper">*/
@@ -655,12 +697,12 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 /*       <ul class="sidebar-menu">*/
 /*         <li class="header">MAIN MENU</li>*/
 /*         <li>*/
-/*           <a href="/alumno">*/
+/*           <a href="/data/sensor/dashboard">*/
 /*             <i class="fa fa-tachometer"></i> <span>Dashboard</span>*/
 /*           </a>*/
 /*         </li>*/
 /*         <li>*/
-/*           <a href="/programa">*/
+/*           <a href="/data/event">*/
 /*             <i class="fa fa-info-circle"></i> <span>Events</span>*/
 /*           </a>*/
 /*         </li>*/
@@ -670,10 +712,10 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 /*           </a>*/
 /* 			<ul class="treeview-menu">*/
 /* 				<li><a href="/admin/customer"><i class="fa fa-users	"></i> Customers</a></li>*/
-/* 				<li><a href="/admin/modwei"><i class="fa fa-rss"></i> MODWEI</a></li>*/
+/* 				<li><a href="/data/modwei"><i class="fa fa-rss"></i> MODWEI</a></li>*/
 /* 				<li><a href="/data/sensor"><i class="fa fa-stethoscope"></i> Sensor</a></li>*/
-/* 				<li><a href="/admin/alarm"><i class="fa fa-bullhorn"></i> Alarms</a></li>*/
-/* 				<li><a href="/admin/notificationlist"><i class="fa fa-envelope-o"></i> Notification Lists</a></li>*/
+/* 				<li><a href="/data/alarm"><i class="fa fa-bullhorn"></i> Alarms</a></li>*/
+/* 				<li><a href="/data/notificationlist"><i class="fa fa-envelope-o"></i> Notification Lists</a></li>*/
 /* 			</ul>*/
 /*         </li>*/
 /*         <li>*/
@@ -900,43 +942,49 @@ class __TwigTemplate_86678bb8fd782c25ce85a0bf49c5d7be364750299fdd8ac51b4d19f348b
 /* </div>*/
 /* <!-- ./wrapper -->*/
 /* */
-/* <!-- jQuery 2.2.0 -->*/
-/* <script src="{{asset('plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>*/
-/* <!-- jQuery UI 1.11.4 -->*/
-/* <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>*/
-/* <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->*/
-/* <script>*/
-/*   $.widget.bridge('uibutton', $.ui.button);*/
-/* </script>*/
-/* <!-- Bootstrap 3.3.5 -->*/
-/* <script src="{{asset('js/bootstrap.min.js')}}"></script>*/
-/* <!-- Morris.js charts -->*/
-/* <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>*/
-/* <script src="{{asset('plugins/morris/morris.min.js')}}"></script>*/
-/* <!-- Sparkline -->*/
-/* <script src="{{asset('plugins/sparkline/jquery.sparkline.min.js')}}"></script>*/
-/* <!-- jvectormap -->*/
-/* <script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>*/
-/* <script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>*/
-/* <!-- jQuery Knob Chart -->*/
-/* <script src="{{asset('plugins/knob/jquery.knob.js')}}"></script>*/
-/* <!-- daterangepicker -->*/
-/* <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>*/
-/* <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>*/
-/* <!-- datepicker -->*/
-/* <script src="{{asset('plugins/datepicker/bootstrap-datepicker.js')}}"></script>*/
-/* <!-- Bootstrap WYSIHTML5 -->*/
-/* <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>*/
-/* <!-- Slimscroll -->*/
-/* <script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>*/
-/* <!-- FastClick -->*/
-/* <script src="{{asset('plugins/fastclick/fastclick.js')}}"></script>*/
-/* <!-- AdminLTE App -->*/
-/* <script src="{{asset('js/app.min.js')}}"></script>*/
-/* <!-- AdminLTE dashboard demo (This is only for demo purposes) -->*/
-/* <script src="{{asset('js/pages/dashboard.js')}}"></script>*/
-/* <!-- AdminLTE for demo purposes -->*/
-/* <script src="{{asset('js/demo.js')}}"></script>*/
-/* </body>*/
+/*     <!-- jQuery 2.2.0 -->*/
+/*     <script src="{{asset('plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>*/
+/*     <!-- jQuery UI 1.11.4 -->*/
+/*     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>*/
+/*     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->*/
+/*     <script>*/
+/*       $.widget.bridge('uibutton', $.ui.button);*/
+/*     </script>*/
+/*     <!-- Bootstrap 3.3.5 -->*/
+/*     <script src="{{asset('js/bootstrap.min.js')}}"></script>*/
+/*     <!-- Morris.js charts -->*/
+/*     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>*/
+/*     <script src="{{asset('plugins/morris/morris.min.js')}}"></script>*/
+/*     <!-- Sparkline -->*/
+/*     <script src="{{asset('plugins/sparkline/jquery.sparkline.min.js')}}"></script>*/
+/*     <!-- jvectormap -->*/
+/*     <script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>*/
+/*     <script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>*/
+/*     <!-- jQuery Knob Chart -->*/
+/*     <script src="{{asset('plugins/knob/jquery.knob.js')}}"></script>*/
+/*     <!-- daterangepicker -->*/
+/*     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>*/
+/*     <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>*/
+/*     <!-- datepicker -->*/
+/*     <script src="{{asset('plugins/datepicker/bootstrap-datepicker.js')}}"></script>*/
+/*     <!-- Bootstrap WYSIHTML5 -->*/
+/*     <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>*/
+/*     <!-- Slimscroll -->*/
+/*     <script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>*/
+/*     <!-- FastClick -->*/
+/*     <script src="{{asset('plugins/fastclick/fastclick.js')}}"></script>*/
+/*     <!-- AdminLTE App -->*/
+/*     <script src="{{asset('js/app.min.js')}}"></script>*/
+/*     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->*/
+/*     <script src="{{asset('js/pages/dashboard.js')}}"></script>*/
+/*     <!-- AdminLTE for demo purposes -->*/
+/*     <script src="{{asset('js/demo.js')}}"></script>*/
+/* */
+/* */
+/*     <!-- end: JavaScript-->*/
+/* */
+/*     {% block javascripts %}{% endblock %}*/
+/* */
+/*   </body>*/
 /* </html>*/
 /* */

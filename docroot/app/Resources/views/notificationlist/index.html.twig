@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <h1>{%trans%}Notification lists{%endtrans%}</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{%trans%}Name{%endtrans%}</th>
+                <th>{%trans%}List{%endtrans%}</th>
+                <th>{%trans%}Notification Type{%endtrans%}</th>
+                <th>{%trans%}Actions{%endtrans%}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for notificationlist in notificationlists %}
+            <tr>
+                <td><a href="{{ path('data_notificationlist_show', { 'id': notificationlist.idnotificationlist }) }}">{{ notificationlist.name }}</a></td>
+                <td>{{ notificationlist.list }}</td>
+                <td>{{ notificationlist.notificationtypenotificationtype.type}}
+                <td>
+                    <a href="{{ path('data_notificationlist_edit', { 'id': notificationlist.idnotificationlist }) }}"><i class="fa fa-pencil-square-o"></i> edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('data_notificationlist_new') }}"><i class="fa fa-plus-square-o"></i> {%trans%}Create a new entry{%endtrans%}</a>
+
+</div>
+{% endblock %}

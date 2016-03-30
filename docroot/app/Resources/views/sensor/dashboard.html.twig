@@ -1,23 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 
 {% endblock stylesheets %}
 
-{% block breadcumb %}
-
-<ul class="breadcrumb">
-    <li>
-        <i class="icon-home"></i>
-        <a href="/admin/sensor/dashboard">Home</a> 
-    </li>
-</ul>
-
-{% endblock breadcumb %}
-
 {% block body %}
-
+<div class="container">
     <h1>{%trans%}Dashboard{%endtrans%}</h1><br/>
     <div ng-app="angularTable">
         <div ng-controller="listdata">
@@ -26,6 +16,7 @@
                 <table class="table table-bordered table-striped table-striped dataTable" ng-show="sensores">
                     <thead>
                         <tr>
+                            <th>{%trans%}MODWEI{%endtrans%}</th>
                             <th>{%trans%}Sensor{%endtrans%}</th>
                             <th>{%trans%}Alarm Level{%endtrans%}</th>
                             <th>{%trans%}Last Value{%endtrans%}</th>
@@ -34,19 +25,20 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="sensor in sensores">
-                            <td><a href="/admin/sensor/chart/{{'{{sensor.idsensor}}'}}">{{'{{sensor.description}}'}}</a></td>
+                            <td>{{'{{sensor.nickname}}'}}</td>
+                            <td><a href="/data/sensor/chart/{{'{{sensor.idsensor}}'}}">{{'{{sensor.description}}'}}</a></td>
                             <td ng-switch="{{'{{sensor.alarmlevel}}'}}" align="center" width="20%">
                                 <div ng-switch-when="0">
-                                    <img src="{{asset('img/dot_green.png')}}" width="32px" height="32px"/>
+                                    <img src="{{asset('img/dot_green.png')}}" width="24px" height="24px"/>
                                 </div>
                                 <div ng-switch-when="1">
-                                    <img src="{{asset('img/dot_yellow.png')}}" width="32px" height="32px"/>
+                                    <img src="{{asset('img/dot_yellow.png')}}" width="24px" height="24px"/>
                                 </div>
                                 <div ng-switch-when="2">
-                                    <img src="{{asset('img/dot_orange.png')}}" width="32px" height="32px"/>
+                                    <img src="{{asset('img/dot_orange.png')}}" width="24px" height="24px"/>
                                 </div>
                                 <div ng-switch-when="3">
-                                    <img src="{{asset('img/dot_red.png')}}" width="32px" height="32px"/>
+                                    <img src="{{asset('img/dot_red.png')}}" width="24px" height="24px"/>
                                 </div>
                             </td>
                             <td width="20%">{{'{{sensor.humanvalue}} {{sensor.measurement}}'}}</td>
@@ -57,9 +49,7 @@
             </div>
         </div>
     </div> 
-
-    
-
+</div>
 {% endblock %}
 
 {% block javascripts %}

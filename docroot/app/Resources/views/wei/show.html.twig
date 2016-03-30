@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>MODWEI: {{wei.nickname}}</h1><br/>
+    <div class="row">
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <th>{%trans%}Nickname{%endtrans%}</th>
+                        <td>{{ wei.nickname }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Last report{%endtrans%}</th>
+                        <td>{% if wei.lastreport %}{{ wei.lastreport|date('d-m-Y H:i') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}IMEI{%endtrans%}</th>
+                        <td>{{ wei.imei }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Description{%endtrans%}</th>
+                        <td>{{ wei.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Telephone operator{%endtrans%}</th>
+                        <td>{{ wei.operator }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Activation date{%endtrans%}</th>
+                        <td>{% if wei.activationdate %}{{ wei.activationdate|date('d-m-Y H:i') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Chip number{%endtrans%}</th>
+                        <td>{{ wei.chipnumber }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="{{ path('data_modwei_index') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to the list{%endtrans%} &nbsp;&nbsp;&nbsp;</a>
+    <a href="{{ path('data_modwei_edit', { 'id': wei.idwei }) }}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+    <!--
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+    -->
+</div>
+{% endblock %}

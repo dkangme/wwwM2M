@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>{%trans%}Notification lists{%endtrans%}</h1><br/>
+    <div class="row">
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <th>{%trans%}Name{%endtrans%}</th>
+                        <td>{{ notificationlist.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}List{%endtrans%}</th>
+                        <td>{{ notificationlist.list }}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+            <a href="{{ path('data_notificationlist_index') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to the list{%endtrans%} &nbsp;&nbsp;&nbsp;</a>
+            <a href="{{ path('data_notificationlist_edit', { 'id': notificationlist.idnotificationlist }) }}"><i class="fa fa-pencil-square-o"></i> {%trans%}Edit{%endtrans%}</a><br/><br/>
+            
+            {{ form_start(delete_form) }}
+                <input type="submit" value="{%trans%}Delete{%endtrans%}">
+            {{ form_end(delete_form) }}
+</div>
+{% endblock %}

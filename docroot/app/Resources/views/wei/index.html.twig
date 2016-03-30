@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <h1>{%trans%}MODWEI list{%endtrans%}</h1><br/>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>{%trans%}Nickname{%endtrans%}</th>
+                <th>{%trans%}Description{%endtrans%}</th>
+                <th>{%trans%}Last report{%endtrans%}</th>
+                
+                <th>{%trans%}Telephone operator{%endtrans%}</th>
+                
+                
+                
+                <th>{%trans%}Actions{%endtrans%}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wei in weis %}
+            <tr>
+                <td><a href="{{ path('data_modwei_show', { 'id': wei.idwei }) }}">{{ wei.nickname }}</a></td>
+                <td>{{ wei.description }}</td>
+                <td>{% if wei.lastreport %}{{ wei.lastreport|date('d-m-Y H:i') }}{% endif %}</td>
+                <td>{{ wei.operator }}</td>
+                
+                
+                <td>
+                    <a href="{{ path('data_modwei_edit', { 'id': wei.idwei }) }}"><i class="fa fa-pencil-square-o"></i> {%trans%}edit{%endtrans%}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('data_modwei_new') }}"><i class="fa fa-plus-square-o"></i> {%trans%}Create a new entry{%endtrans%}</a> 
+</div>
+
+{% endblock %}

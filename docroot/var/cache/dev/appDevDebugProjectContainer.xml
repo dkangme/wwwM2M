@@ -885,6 +885,7 @@
             <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.es.xlf</argument>
             <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
             <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
+            <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/app/Resources/translations/messages.es.xlf</argument>
           </argument>
           <argument key="nl" type="collection">
             <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
@@ -1908,7 +1909,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56ef398aa33201.03464726</argument>
+            <argument>56fb1ef271c409.65528503</argument>
           </service>
         </argument>
       </argument>
@@ -2211,7 +2212,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56ef398aa33201.03464726</argument>
+            <argument>56fb1ef271c409.65528503</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3232,6 +3233,10 @@
       <call method="addPath">
         <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/src/AuthBundle/Resources/views</argument>
         <argument>Auth</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>/home/dkangme/Documents/GitHub/wwwM2M/docroot/vendor/friendsofsymfony/user-bundle/Resources/views</argument>

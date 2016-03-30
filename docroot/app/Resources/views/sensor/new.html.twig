@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Sensor creation</h1>
+<div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_sensor_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <h1>{%trans%}Sensor creation{%endtrans%}</h1>
+    <div class="row">
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="{%trans%}Create{%endtrans%}" />
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <br/>
+    <a href="{{ path('data_sensor_index') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to the list{%endtrans%}</a>
+    
+</div>
 {% endblock %}

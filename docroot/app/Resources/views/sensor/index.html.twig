@@ -1,57 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+    <h1>{%trans%}Sensor list{%endtrans%}</h1>
 
-    <div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>{%trans%}MODWEI{%endtrans%}</th>
+                <th>{%trans%}Description{%endtrans%}</th>
+                <th>{%trans%}Port Number{%endtrans%}</th>
+                <th>{%trans%}Current Value{%endtrans%}</th>
+                <th>{%trans%}Last report{%endtrans%}</th>   
+                <th>{%trans%}Alarm level{%endtrans%}</th>
+                <th>{%trans%}Actions{%endtrans%}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sensor in sensors %}
+            <tr>
+                <td>{{ sensor.weiwei.nickname }}</td>
+                <td><a href="{{ path('data_sensor_show', { 'id': sensor.idsensor }) }}">{{ sensor.description }}</a></td>
+                <td>{{ sensor.channelid }}</td>
+                <td>{{ sensor.humanvalue }} {{ sensor.sensortypesensortype.measurement }}</td>
+                <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('d-m-Y H:i') }}{% endif %}</td>
+                <td align="center">
+                    {% if sensor.alarmlevel== 0 %}<img src="{{ asset('img/dot_green.png') }}" width="24" height="24"/>{% endif %}
+                    {% if sensor.alarmlevel== 1 %}<img src="{{ asset('img/dot_yellow.png') }}" width="24" height="24"/>{% endif %}
+                    {% if sensor.alarmlevel== 2 %}<img src="{{ asset('img/dot_orange.png') }}" width="24" height="24"/>{% endif %}
+                    {% if sensor.alarmlevel== 3 %}<img src="{{ asset('img/dot_red.png') }}" width="24" height="24"/>{% endif %}
+                </td>
+                
+                
+                <td>
+                    <a href="{{ path('data_sensor_edit', { 'id': sensor.idsensor }) }}"><i class="fa fa-pencil-square-o"></i> {%trans%}edit{%endtrans%}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-        <h1>Sensor list</h1>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Idsensor</th>
-                    <th>Humanvalue</th>
-                    <th>Value</th>
-                    <th>Lastreport</th>
-                    <th>Description</th>
-                    <th>Alarmlevel</th>
-                    <th>Formula</th>
-                    <th>Channelid</th>
-                    <th>Savehistoryevery</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for sensor in sensors %}
-                <tr>
-                    <td><a href="{{ path('data_sensor_show', { 'id': sensor.idsensor }) }}">{{ sensor.idsensor }}</a></td>
-                    <td>{{ sensor.humanvalue }}</td>
-                    <td>{{ sensor.value }}</td>
-                    <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    <td>{{ sensor.description }}</td>
-                    <td>{{ sensor.alarmlevel }}</td>
-                    <td>{{ sensor.formula }}</td>
-                    <td>{{ sensor.channelid }}</td>
-                    <td>{{ sensor.savehistoryevery }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('data_sensor_show', { 'id': sensor.idsensor }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('data_sensor_edit', { 'id': sensor.idsensor }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <ul>
-            <li>
-                <a href="{{ path('data_sensor_new') }}">Create a new entry</a>
-            </li>
-        </ul>
+    <a href="{{ path('data_sensor_new') }}"><i class="fa fa-plus-square-o"></i>  {%trans%}Create a new entry{%endtrans%}</a>
     </div>
 {% endblock %}

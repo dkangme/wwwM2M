@@ -138,8 +138,6 @@ class DefaultController extends Controller
 
                                 $logger->info("Alarm validation true.");
 
-                                $flagAlarma = true;
-
                                 //We count the number of alarms fit the criteria in order to determine whether the sensor should be restored in an alarm level 0
                                 $countAlarms++;
 
@@ -160,7 +158,7 @@ class DefaultController extends Controller
 
                                     $em->flush();
 
-                                    
+                                    $flagAlarma = true;
 
                                     if ($alarma->getAlarmlevel()>0) {
 

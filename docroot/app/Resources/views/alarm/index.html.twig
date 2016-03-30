@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <h1>{%trans%}Alarm list{%endtrans%}</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>{%trans%}Description{%endtrans%}</th>
+                <th>{%trans%}Expression{%endtrans%}</th>
+                
+                <th width="100px">{%trans%}Next alarm interval (minutes){%endtrans%}</th>
+                <th width="100px">{%trans%}Alarm level{%endtrans%}</th>
+                
+                <th>{%trans%}Actions{%endtrans%}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alarm in alarms %}
+            <tr>
+                <td><a href="{{ path('data_alarm_show', { 'id': alarm.idalarm }) }}">{{ alarm.description }}</a></td>
+                <td>{{ alarm.expression }}</td>
+                <td>{{ alarm.nextalarminterval }}</td>
+                <td align="center">
+                    {% if alarm.alarmlevel == 0 %}<img src="{{ asset('img/dot_green.png') }}" width="24" height="24"/>{% endif %}
+                    {% if alarm.alarmlevel == 1 %}<img src="{{ asset('img/dot_yellow.png') }}" width="24" height="24"/>{% endif %}
+                    {% if alarm.alarmlevel == 2 %}<img src="{{ asset('img/dot_orange.png') }}" width="24" height="24"/>{% endif %}
+                    {% if alarm.alarmlevel == 3 %}<img src="{{ asset('img/dot_red.png') }}" width="24" height="24"/>{% endif %}
+                </td>
+                <td>        
+                    <a href="{{ path('data_alarm_edit', { 'id': alarm.idalarm }) }}"><i class="fa fa-pencil-square-o"></i> edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('data_alarm_new') }}"><i class="fa fa-plus-square-o"></i>  {%trans%}Create a new entry{%endtrans%}</a>
+
+</div>
+{% endblock %}

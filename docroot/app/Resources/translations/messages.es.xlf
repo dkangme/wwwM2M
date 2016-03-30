@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Country</source>
+                <target>País</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Actions</source>
+                <target>Acciones</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Country List</source>
+                <target>Listado de Países</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>show</source>
+                <target>mostrar</target>
+            </trans-unit>      
+            <trans-unit id="5">
+                <source>edit</source>
+                <target>editar</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Create a new entry</source>
+                <target>Crear nuevo elemento</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Country edit</source>
+                <target>Edición de País</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Back to the list</source>
+                <target>Volver</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Dashboard</source>
+                <target>Panel de Control</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Events</source>
+                <target>Eventos</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Reports</source>
+                <target>Reportes</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Configuration</source>
+                <target>Configuración</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Users</source>
+                <target>Usuarios</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Customers</source>
+                <target>Clientes</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Sensors</source>
+                <target>Sensores</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Set Alarms</source>
+                <target>Configurar Alarmas</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Logout</source>
+                <target>Salir</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Event List</source>
+                <target>Eventos</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Time Stamp</source>
+                <target>Fecha y Hora</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Level</source>
+                <target>Nivel</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Description</source>
+                <target>Descripción</target>
+            </trans-unit>            
+            <trans-unit id="23">
+                <source>Search</source>
+                <target>Buscar</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Type text to search</source>
+                <target>Ingrese el texto a buscar</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Event</source>
+                <target>Evento</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Click on the title of the column "Time Stamp" or "Level" to sort the contents of the column.</source>
+                <target>Haga un clic sobre el título de la columna "Fecha y hora" o "Nivel" para ordenar el contenido de la columna.</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>MODWEI List</source>
+                <target>MODWEI disponibles</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Nickname</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Sensor</source>
+                <target>Sensor</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Alarm Level</source>
+                <target>Nivel de Alarma</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Last Value</source>
+                <target>Último Valor</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Last Report</source>
+                <target>Último Reporte</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>This control panel is refreshed every 5 seconds.</source>
+                <target>Éste panel de control se refresca cada 5 segundos.</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Notification Lists</source>
+                <target>Listas de Notificación</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Records of the last 24 hours</source>
+                <target>Registros de las últimas 24 horas</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Back to dashboard</source>
+                <target>Volver al panel de control</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Telephone operator</source>
+                <target>Operadora Telefónica</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Customer</source>
+                <target>Cliente</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Status</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Create a new MODWEI</source>
+                <target>Crear un nuevo MODWEI</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>MODWEI edit</source>
+                <target>Editar MODWEI</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>SIM Number</source>
+                <target>Número de SIM</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Location</source>
+                <target>Ubicación</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Current Value</source>
+                <target>Valor Actual</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>Last report</source>
+                <target>Último reporte</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>Alarm level</source>
+                <target>Nivel de alarma</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>Formula</source>
+                <target>Fórmula</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Channel Id</source>
+                <target>Canal</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>Create new sensor</source>
+                <target>Crear nuevo sensor</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>Activation date</source>
+                <target>Fecha de activación</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>Modification date</source>
+                <target>Fecha de modificación</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>Chip number</source>
+                <target>Número de chip</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>MODWEI Information</source>
+                <target>Información de MMODWEI</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>IMEI</source>
+                <target>IMEI</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>Sensor list</source>
+                <target>Lista de sensores</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>Previous</source>
+                <target>Anterior</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>Next</source>
+                <target>Siguiente</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>Save history every (minutes)</source>
+                <target>Registrar historia cada (minutos)</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>Port Number</source>
+                <target>Número de puerta</target>
+            </trans-unit>   
+            <trans-unit id="60">
+                <source>Port 1 - 8</source>
+                <target>Puerta 1 - 8</target>
+            </trans-unit>                 
+            <trans-unit id="61">
+                <source>1 - 120 minutes</source>
+                <target>1 - 120 minutos</target>
+            </trans-unit>   
+            <trans-unit id="62">
+                <source>Port Value</source>
+                <target>Valor de la puerta</target>
+            </trans-unit>  
+            <trans-unit id="63">
+                <source>MODWEI</source>
+                <target>MODWEI</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>Sensor Type</source>
+                <target>Tipo de Sensor</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>Sensor creation</source>
+                <target>Crear un nuevo sensor</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>Create</source>
+                <target>Crear</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>MODWEI list</source>
+                <target>MODWEIs disponibles</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>Update</source>
+                <target>Actualizar</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>MODWEI creation</source>
+                <target>Nuevo MODWEI</target>
+            </trans-unit>            
+            <trans-unit id="70">
+                <source>Delete MODWEI</source>
+                <target>Eliminar MODWEI</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>Name</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>List</source>
+                <target>Lista</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>Notification Type</source>
+                <target>Tipo de notificación</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>Notification lists</source>
+                <target>Lista de notificaciones</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>Delete</source>
+                <target>Borrar</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>Notification list edit</source>
+                <target>Editar lista de notificación</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>Notification list creation</source>
+                <target>Crear lista de notificación</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>Export data to Microsoft Excel</source>
+                <target>Exportar datos a Microsoft Excel</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>Expression</source>
+                <target>Expresión</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>Next alarm interval (minutes)</source>
+                <target>Intervalo de la próxima alarma (minutos)</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>Alarm list</source>
+                <target>Detalle de alarmas</target>
+            </trans-unit>
+
+            <trans-unit id="82">
+                <source>Alarm definition</source>
+                <target>Definición de Alarma</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

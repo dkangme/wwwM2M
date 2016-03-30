@@ -1,60 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Sensor</h1>
+<div class="container">
+    <h1>{{ sensor.description }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Idsensor</th>
-                <td>{{ sensor.idsensor }}</td>
-            </tr>
-            <tr>
-                <th>Humanvalue</th>
-                <td>{{ sensor.humanvalue }}</td>
-            </tr>
-            <tr>
-                <th>Value</th>
-                <td>{{ sensor.value }}</td>
-            </tr>
-            <tr>
-                <th>Lastreport</th>
-                <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ sensor.description }}</td>
-            </tr>
-            <tr>
-                <th>Alarmlevel</th>
-                <td>{{ sensor.alarmlevel }}</td>
-            </tr>
-            <tr>
-                <th>Formula</th>
-                <td>{{ sensor.formula }}</td>
-            </tr>
-            <tr>
-                <th>Channelid</th>
-                <td>{{ sensor.channelid }}</td>
-            </tr>
-            <tr>
-                <th>Savehistoryevery</th>
-                <td>{{ sensor.savehistoryevery }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_sensor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_sensor_edit', { 'id': sensor.idsensor }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>{%trans%}Current Value{%endtrans%}</th>
+                        <td>{{ sensor.humanvalue }} {{ sensor.sensortypesensortype.measurement }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Port Value{%endtrans%}</th>
+                        <td>{{ sensor.value }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Last report{%endtrans%}</th>
+                        <td>{% if sensor.lastreport %}{{ sensor.lastreport|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Description{%endtrans%}</th>
+                        <td>{{ sensor.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Alarm level{%endtrans%}</th>
+                        <td>
+                            {% if sensor.alarmlevel== 0 %}<img src="{{ asset('img/dot_green.png') }}" width="24" height="24"/>{% endif %}
+                            {% if sensor.alarmlevel== 1 %}<img src="{{ asset('img/dot_yellow.png') }}" width="24" height="24"/>{% endif %}
+                            {% if sensor.alarmlevel== 2 %}<img src="{{ asset('img/dot_orange.png') }}" width="24" height="24"/>{% endif %}
+                            {% if sensor.alarmlevel== 3 %}<img src="{{ asset('img/dot_red.png') }}" width="24" height="24"/>{% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Formula</th>
+                        <td>{{ sensor.formula }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Port Number{%endtrans%}</th>
+                        <td>{{ sensor.channelid }}</td>
+                    </tr>
+                    <tr>
+                        <th>{%trans%}Save history every (minutes){%endtrans%}</th>
+                        <td>{{ sensor.savehistoryevery }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+    <a href="{{ path('data_sensor_index') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to the list{%endtrans%} &nbsp;&nbsp;&nbsp;</a>
+    <a href="{{ path('data_sensor_edit', { 'id': sensor.idsensor }) }}"><i class="fa fa-pencil-square-o"></i> {%trans%}Edit{%endtrans%}</a>
+    
+</div>
 {% endblock %}

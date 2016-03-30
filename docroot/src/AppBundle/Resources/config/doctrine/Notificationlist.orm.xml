@@ -3,6 +3,7 @@
   <entity name="AppBundle\Entity\Notificationlist" table="NotificationList">
     <indexes>
       <index name="fk_NotificationList_notificationType1_idx" columns="notificationType_idnotificationType"/>
+      <index name="fk_NotificationList_Customer1_idx" columns="Customer_id"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="name_UNIQUE" columns="name"/>
@@ -23,6 +24,11 @@
     <many-to-one field="notificationtypenotificationtype" target-entity="Notificationtype" fetch="LAZY">
       <join-columns>
         <join-column name="notificationType_idnotificationType" referenced-column-name="idnotificationType"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="customer" target-entity="Customer" fetch="LAZY">
+      <join-columns>
+        <join-column name="Customer_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

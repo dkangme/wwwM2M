@@ -1,3 +1,15 @@
+app_alarm:
+    resource: "@AppBundle/Controller/AlarmController.php"
+    type:     annotation
+
+app_notificationlist:
+    resource: "@AppBundle/Controller/NotificationlistController.php"
+    type:     annotation
+
+app_wei:
+    resource: "@AppBundle/Controller/WeiController.php"
+    type:     annotation
+
 app_sensor:
     resource: "@AppBundle/Controller/SensorController.php"
     type:     annotation
