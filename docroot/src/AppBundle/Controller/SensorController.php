@@ -52,6 +52,31 @@ class SensorController extends Controller
         return $this->render('sensor/dashboard.html.twig');
     }
 
+
+    /**
+     * Export Sensor Data
+     * @Route("/exportdata", name="data_sensor_export")
+     * @Method("GET")
+     */
+    public function exportDataAction()
+    {
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery('
+            SELECT p, q.nickname
+            FROM AppBundle:Sensor p
+            JOIN LEFT p.weiwei = q.idwei
+            WHERE q.customer = :customerId
+            OREDER BY q.nickname ASC'
+            );
+
+        
+        return $this->render('sensor/exportdata.html.twig');
+    }
+
+
     /**
      * Lists all Sensor entities, return JSON.
      *

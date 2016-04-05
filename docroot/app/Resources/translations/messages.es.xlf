@@ -326,10 +326,69 @@
                 <source>Alarm list</source>
                 <target>Detalle de alarmas</target>
             </trans-unit>
-
             <trans-unit id="82">
                 <source>Alarm definition</source>
                 <target>Definición de Alarma</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>Alarm edit</source>
+                <target>Modificar Alarma</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>Normal</source>
+                <target>Normal</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>Caution</source>
+                <target>Precaución</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>Warning</source>
+                <target>Atención</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>Alert</source>
+                <target>Alerta</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>Last alarm</source>
+                <target>Última alarma</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>MAIN MENU</source>
+                <target>MENU PRINCIPAL</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>Alarms</source>
+                <target>Alarmas</target>
+            </trans-unit>
+           <trans-unit id="91">
+                <source>Exit</source>
+                <target>Salir</target>
+            </trans-unit>           
+            <trans-unit id="92">
+                <source>Fixed Layout</source>
+                <target>Esquema Fijo</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>Sign out</source>
+                <target>Salir</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>Profile</source>
+                <target>Perfil</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>Event list</source>
+                <target>Lista de eventos</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>Event date</source>
+                <target>Fecha</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>Export Data</source>
+                <target>Exportar datos  </target>
             </trans-unit>
         </body>
     </file>

@@ -24,6 +24,5 @@ app.controller('listdata',function($scope, $http, $timeout){
 	$http.get("/data/sensor/json").success(function(response){ 
 		$scope.sensores = response;  //ajax request to fetch data into $scope.data
 	});	
-
 });
 

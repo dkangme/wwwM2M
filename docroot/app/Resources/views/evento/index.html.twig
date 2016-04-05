@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block body %}
+    <div class="container">
+        <h1>{%trans%}Event list{%endtrans%}</h1>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th width="150px">{%trans%}Event date{%endtrans%}</th>
+                    <th width="50px">{%trans%}Level{%endtrans%}</th>
+                    <th>{%trans%}Description{%endtrans%}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for evento in eventos %}
+                <tr>
+                    <td>{% if evento.fechaevento %}{{ evento.fechaevento|date('d-m-Y H:i') }} {% endif %}</td>
+                    <td>
+                        {% if evento.nivelevento == 0 %}<img src="{{ asset('img/dot_green.png') }}" width="24" height="24"/>{% endif %}
+                        {% if evento.nivelevento == 1 %}<img src="{{ asset('img/dot_yellow.png') }}" width="24" height="24"/>{% endif %}
+                        {% if evento.nivelevento == 2 %}<img src="{{ asset('img/dot_orange.png') }}" width="24" height="24"/>{% endif %}
+                        {% if evento.nivelevento >= 3 %}<img src="{{ asset('img/dot_red.png') }}" width="24" height="24"/>{% endif %}
+                    </td>
+                    <td><a href="{{ path('data_evento_show', { 'id': evento.idevento }) }}">{{ evento.descripcion }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation">
+        {{ knp_pagination_render(eventos) }}
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+
+
+    <script>
+        $('#dp3').datepicker();
+        $('#dp4').datepicker();
+    </script>
+{% endblock %}

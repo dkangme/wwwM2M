@@ -5,6 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AlarmType extends AbstractType
 {
@@ -16,11 +19,25 @@ class AlarmType extends AbstractType
     {
         $builder
             ->add('expression')
-            ->add('lastalarm', 'datetime')
-            ->add('nextalarminterval')
-            ->add('alarmlevel')
+            //->add('lastalarm', 'datetime')
+            ->add('nextalarminterval', IntegerType::class, array(
+                'label' => 'Next alarm interval (minutes)'
+                ))
+            ->add('alarmlevel', ChoiceType::class, array(
+                'choices' => array (
+                    'Normal' => 0,
+                    'Caution' => 1,
+                    'Warning' => 2,
+                    'Alert' => 3
+                ),
+                'label' => 'Alarm Level'
+                ))
             ->add('description')
-            ->add('sensorsensor')
+            ->add('sensorsensor', EntityType::class, array(
+                'label' => 'Sensor Type',
+                'class' => 'AppBundle:Sensor',
+                'choice_label' => 'description'
+            ))
         ;
     }
     

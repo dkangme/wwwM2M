@@ -254,6 +254,35 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         not_caicai_report:
 
         if (0 === strpos($pathinfo, '/data')) {
+            if (0 === strpos($pathinfo, '/data/evento')) {
+                // data_evento_index
+                if (rtrim($pathinfo, '/') === '/data/evento') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_evento_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'data_evento_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\EventoController::indexAction',  '_route' => 'data_evento_index',);
+                }
+                not_data_evento_index:
+
+                // data_evento_show
+                if (preg_match('#^/data/evento/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_evento_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'data_evento_show')), array (  '_controller' => 'AppBundle\\Controller\\EventoController::showAction',));
+                }
+                not_data_evento_show:
+
+            }
+
             if (0 === strpos($pathinfo, '/data/notificationlist')) {
                 // data_notificationlist_index
                 if (rtrim($pathinfo, '/') === '/data/notificationlist') {
@@ -342,6 +371,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'AppBundle\\Controller\\SensorController::dashboardAction',  '_route' => 'data_sensor_dashboard',);
                 }
                 not_data_sensor_dashboard:
+
+                // data_sensor_export
+                if ($pathinfo === '/data/sensor/exportdata') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_data_sensor_export;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\SensorController::exportDataAction',  '_route' => 'data_sensor_export',);
+                }
+                not_data_sensor_export:
 
                 // data_sensor_json_index
                 if ($pathinfo === '/data/sensor/json') {

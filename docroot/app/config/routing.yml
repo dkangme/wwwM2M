@@ -1,3 +1,7 @@
+app_evento:
+    resource: "@AppBundle/Controller/EventoController.php"
+    type:     annotation
+
 app_alarm:
     resource: "@AppBundle/Controller/AlarmController.php"
     type:     annotation
