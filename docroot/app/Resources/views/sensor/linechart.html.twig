@@ -59,6 +59,8 @@
     <h1>{%trans%}Records of the last 24 hours{%endtrans%}</h1><br/>
 
     <a href="{{ path('data_sensor_dashboard') }}"><i class="fa fa-caret-square-o-left"></i> {%trans%}Back to dashboard{%endtrans%}</a>
+
+    <a class="btn btn-primary" href="/data/sensor/get24csv/{{ sensor.idsensor }}" role="button">{%trans%}Export data to Microsoft Excel{%endtrans%}</a><br/><br/>
     
     <div id="curve_chart" style="width: 900px; height: 300px"></div> 
 

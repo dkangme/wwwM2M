@@ -28,6 +28,7 @@
                             <td>{{'{{sensor.nickname}}'}}</td>
                             <td><a href="/data/sensor/chart/{{'{{sensor.idsensor}}'}}">{{'{{sensor.description}}'}}</a></td>
                             <td ng-switch="{{'{{sensor.alarmlevel}}'}}" align="center" width="20%">
+
                                 <div ng-switch-when="0">
                                     <img src="{{asset('img/dot_green.png')}}" width="24px" height="24px"/>
                                 </div>
@@ -40,6 +41,11 @@
                                 <div ng-switch-when="3">
                                     <img src="{{asset('img/dot_red.png')}}" width="24px" height="24px"/>
                                 </div>
+
+                                <div ng-switch-when="99">
+                                    <img src="{{asset('img/dot_black.png')}}" width="24px" height="24px"/>
+                                </div>
+
                             </td>
                             <td width="20%">{{'{{sensor.humanvalue}} {{sensor.measurement}}'}}</td>
                             <td width="20%">{{'{{sensor.lastreport}}'}}</td>

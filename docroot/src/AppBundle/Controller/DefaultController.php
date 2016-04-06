@@ -75,30 +75,97 @@ class DefaultController extends Controller
 
                     if ($sensor->getChannelid()==1) {
                         
-                        $sensor->setValue($ch1);
-                        $expresion = sprintf($sensor->getFormula(), $ch1);
+                        if ($ch1==0) {
+                            
+                            $sensor->setAlarmlevel(99);
+
+                            // persist new sensor value
+
+                            $sensor->setLastReport($recordDate);
+                            $sensor->setHumanValue($sensor->getSensortypesensortype()->getMinvalue());
+
+                            $em->persist($sensor);
+
+                            $em->flush();
+
+                        } else
+                        {
+                            $sensor->setValue($ch1);
+                            $expresion = sprintf($sensor->getFormula(), $ch1);                            
+                        }
 
                     } elseif ($sensor->getChannelid()==2) {
 
-                        $sensor->setValue($ch2);
-                        $expresion = sprintf($sensor->getFormula(), $ch2);
-                        
+                        if ($ch1==0) {
+
+                            $sensor->setAlarmlevel(99);
+
+                            // persist new sensor value
+
+                            $sensor->setLastReport($recordDate);
+                            $sensor->setHumanValue($sensor->getSensortypesensortype()->getMinvalue());
+
+                            $em->persist($sensor);
+
+                            $em->flush();
+
+                        } else
+                        {
+                            $sensor->setValue($ch2);
+                            $expresion = sprintf($sensor->getFormula(), $ch2);
+                        }                        
                     } elseif ($sensor->getChannelid()==3) {
+                        if ($ch1==0) {
 
-                        $sensor->setValue($ch3);
-                        $expresion = sprintf($sensor->getFormula(), $ch3);
-                        
+                            $sensor->setAlarmlevel(99);
+
+                            // persist new sensor value
+
+                            $sensor->setLastReport($recordDate);
+                            $sensor->setHumanValue($sensor->getSensortypesensortype()->getMinvalue());
+
+                            $em->persist($sensor);
+
+                            $em->flush();
+
+                        } else
+                        {
+
+                            $sensor->setValue($ch3);
+                            $expresion = sprintf($sensor->getFormula(), $ch3);
+                        }                        
                     } elseif ($sensor->getChannelid()==4) {
+                        if ($ch1==0) {
 
-                        $sensor->setValue($ch4);
-                        $expresion = sprintf($sensor->getFormula(), $ch4);
-                        
+                            $sensor->setAlarmlevel(99);
+
+                            // persist new sensor value
+
+                            $sensor->setLastReport($recordDate);
+                            $sensor->setHumanValue($sensor->getSensortypesensortype()->getMinvalue());
+
+                            $em->persist($sensor);
+
+                            $em->flush();
+
+                        } else
+                        {
+
+                            $sensor->setValue($ch4);
+                            $expresion = sprintf($sensor->getFormula(), $ch4);
+                        }                        
                     }
 
                     $logger->info("Expresion: ".$expresion);
 
                     // calculate human value from sensor value in volts
                     $var = $this->calcula_expresion($expresion);
+
+                    // correct the minimum possible value of the sensor
+
+                    if ($var < $sensor->getSensortypesensortype()->getMinvalue()) {
+                        $var = $sensor->getSensortypesensortype()->getMinvalue();
+                    }
 
                     $logger->info("Human Value: ".$var);
 

@@ -1,4 +1,4 @@
 timestamp, value 
 {% for row in data %}
-{{ row.value }},{{ row.timestamp }}
+{{ row.value }},{{ row.timestamp|date('d-m-Y h:i') }}
 {% endfor %}
