@@ -114,7 +114,7 @@ class SensorController extends Controller
         foreach ($sensores as $value) {
             $returnValue[] = [
                 'idsensor' => $value['idsensor'],
-                'humanvalue' => $value['humanvalue'],
+                'humanvalue' => number_format($value['humanvalue'], 2, ',', '.'),
                 'value' => $value['value'],
                 'lastreport' => $value['lastreport']->format('d-m-Y H:i'),
                 'description' => $value['description'],

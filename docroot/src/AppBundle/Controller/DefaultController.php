@@ -70,11 +70,16 @@ class DefaultController extends Controller
                 foreach ($sensores as $sensor) {
                     $var = 0;
                     $recordDate = new \DateTime();
+                    $expresion = "";
 
                     $activity = date_diff($recordDate,$sensor->getLastReport());
 
                     if ($sensor->getChannelid()==1) {
-                        
+
+                        $sensor->setValue($ch1);
+                        $expresion = sprintf($sensor->getFormula(), $ch1);                            
+
+    
                         if ($ch1==0) {
                             
                             $sensor->setAlarmlevel(99);
@@ -88,15 +93,14 @@ class DefaultController extends Controller
 
                             $em->flush();
 
-                        } else
-                        {
-                            $sensor->setValue($ch1);
-                            $expresion = sprintf($sensor->getFormula(), $ch1);                            
-                        }
-
+                            break;
+                        } 
+                    
                     } elseif ($sensor->getChannelid()==2) {
+                        $sensor->setValue($ch2);
+                        $expresion = sprintf($sensor->getFormula(), $ch2);
 
-                        if ($ch1==0) {
+                        if ($ch2==0) {
 
                             $sensor->setAlarmlevel(99);
 
@@ -109,13 +113,16 @@ class DefaultController extends Controller
 
                             $em->flush();
 
-                        } else
-                        {
-                            $sensor->setValue($ch2);
-                            $expresion = sprintf($sensor->getFormula(), $ch2);
-                        }                        
+                            break;
+                        } 
+                        
+                      
                     } elseif ($sensor->getChannelid()==3) {
-                        if ($ch1==0) {
+
+                        $sensor->setValue($ch3);
+                        $expresion = sprintf($sensor->getFormula(), $ch3);
+
+                        if ($ch3==0) {
 
                             $sensor->setAlarmlevel(99);
 
@@ -128,14 +135,16 @@ class DefaultController extends Controller
 
                             $em->flush();
 
-                        } else
-                        {
+                            break;
 
-                            $sensor->setValue($ch3);
-                            $expresion = sprintf($sensor->getFormula(), $ch3);
-                        }                        
+                        }
                     } elseif ($sensor->getChannelid()==4) {
-                        if ($ch1==0) {
+
+                        $sensor->setValue($ch4);
+                        $expresion = sprintf($sensor->getFormula(), $ch4);
+
+
+                        if ($ch4==0) {
 
                             $sensor->setAlarmlevel(99);
 
@@ -148,12 +157,7 @@ class DefaultController extends Controller
 
                             $em->flush();
 
-                        } else
-                        {
-
-                            $sensor->setValue($ch4);
-                            $expresion = sprintf($sensor->getFormula(), $ch4);
-                        }                        
+                        }
                     }
 
                     $logger->info("Expresion: ".$expresion);
@@ -267,6 +271,7 @@ class DefaultController extends Controller
                                                 }
                              
                                                 if ($notif->getNotificationlistnotificationlist()->getNotificationtypenotificationtype()->getType() == "e-mail") {
+                                                    $logger->info("Sending e-mail");
 
                                                     $this->sendEmail($notif->getNotificationlistnotificationlist()->getList(), 
                                                         $alarma->getAlarmlevel(), $alarma->getDescription(), $WEI->getDescription(), $recordDate, $var, $sensor->getSensortypesensortype()->getMeasurement());
@@ -283,9 +288,9 @@ class DefaultController extends Controller
                                         $evento->setNivelevento($alarma->getAlarmlevel());
                                         $evento->setFechaevento($recordDate);
                                         $evento->setCustomer($WEI->getCustomer());
-                                        $evento->setDescripcion("El sensor ".$sensor->getDescription()." ha generado la alarma: ".$alarma->getDescription()." al marcar ".$var." ".$sensor->getSensortypesensortype()->getMeasurement());
+                                        $evento->setDescripcion("El sensor ".$sensor->getDescription()." ha generado la alarma: ".$alarma->getDescription()." al marcar ".number_format($var, 2, ',','.')." ".$sensor->getSensortypesensortype()->getMeasurement());
 
-                                        $logger->info("El sensor ".$sensor->getDescription()." asociado a ".$WEI->getDescription()."ha generado la alarma: ".$alarma->getDescription()." al ".$var." ".$sensor->getSensortypesensortype()->getMeasurement());
+                                        $logger->info("El sensor ".$sensor->getDescription()." asociado a ".$WEI->getDescription()."ha generado la alarma: ".$alarma->getDescription()." al ".number_format($var, 2, ',','.')." ".$sensor->getSensortypesensortype()->getMeasurement());
                                         $em->persist($evento);
                                         $em->flush();
 
@@ -295,6 +300,8 @@ class DefaultController extends Controller
                                 }else {
                                     // The alarm has already been sent and should be expected to complete the waiting time for the next prompt, 
                                     // only the sensor value is updated.
+
+                                    $flagAlarma = true;
 
                                     if ($alarma->getAlarmlevel()>0) {
                                         $sensor->setHumanValue($var);  
@@ -322,11 +329,11 @@ class DefaultController extends Controller
     
                     // check if need save new value in sensor history
 
-                    if ($activity->i >= $sensor->getSavehistoryevery() || $activity->h > 0 || $activity->d > 0 || $activity->m > 0 || $activity->y > 0)
+                    if ($activity->i >= $sensor->getSavehistoryevery() || $activity->h > 0 || $activity->d > 0 || $activity->m > 0 || $activity->y > 0 || $flagAlarma == true)
                     {
                         $history = new Sensorhistory();
 
-                        $history->setHumanValue($var);
+                        $history->setHumanValue(number_format($var, 2, ',','.'));
                         $history->setTimeStamp($recordDate);
                         $history->setSensorsensor($sensor);
 
@@ -439,17 +446,18 @@ class DefaultController extends Controller
         $subject = "";
         $nivel = "";
 
+        $logger = $this->get('logger');
 
         switch ($level) {
-            case "CLevel":
+            case 1:
                 $subject = "ALARMA - Precaución nivel de ".$gas;
                 $nivel = "PRECAUCIÓN";
                 break;
-            case "WLevel":
+            case 2:
                 $subject = "ALARMA - Advertencia nivel de ".$gas;
                 $nivel = "ADVERTENCIA";
                 break;
-            case "ALevel":
+            case 3:
                 $subject = "ALARMA - Crítico nivel de ".$gas;
                 $nivel = "NIVEL CRÍTICO";
                 break;
@@ -475,13 +483,17 @@ class DefaultController extends Controller
         );
 
 
-        $lista += ",";
+        $logger->info('Sending mail to '.$lista);
+
+        //$lista += ",";
 
         $tok = strtok($lista, ",");
+        $logger->info('Email ropository: '.$tok);
 
         while ($tok!==false)
         {
             $message->addTo($tok);
+            $logger->info('Email ropository: '.$tok);
             $tok = strtok(",");
         }
 

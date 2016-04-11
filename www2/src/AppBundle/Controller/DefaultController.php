@@ -100,7 +100,7 @@ class DefaultController extends Controller
                     // calculate human value from sensor value in volts
                     $var = $this->calcula_expresion($expresion);
 
-                    $logger->info("Human Value: ".$var);
+                    $logger->info("Human Value: ".$var+1);
 
 
                     // evaluate alarms

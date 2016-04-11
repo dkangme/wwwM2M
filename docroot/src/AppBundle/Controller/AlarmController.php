@@ -92,7 +92,7 @@ class AlarmController extends Controller
             $em->persist($alarm);
             $em->flush();
 
-            return $this->redirectToRoute('data_alarm_edit', array('id' => $alarm->getId()));
+            return $this->redirectToRoute('data_alarm_edit', array('id' => $alarm->getIdalarm()));
         }
 
         return $this->render('alarm/edit.html.twig', array(
